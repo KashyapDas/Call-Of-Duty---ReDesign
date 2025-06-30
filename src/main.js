@@ -1,0 +1,1 @@
+console.log("ReDesign Call of Duty website")
