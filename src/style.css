@@ -37,6 +37,10 @@ html,body{
     background-color: #0b090a;
 }
 
+body::-webkit-scrollbar{
+    display: none;
+}
+
 #animationPage{
     height: 100vh;
     width: 100vw;
@@ -72,6 +76,7 @@ html,body{
 main{
     height: 100%;
     width: 100%;
+    position: relative;
 }
 
 #navbar{
@@ -82,6 +87,11 @@ main{
     padding: 0.5vw;
     column-gap: 5vw;
     cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
 }
 #navbar h3{
     font-family: Cabinet;
@@ -93,13 +103,101 @@ main{
     transform: scale(1.2);
     transition: all 0.3s ease-in-out;
 }
-
-#hero{
-    height: 100vh;
-    width: 100vw;
-    color: white;
+#contentPage{
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+#contentPage::-webkit-scrollbar{
+    display: none;
+}
+#heading1{
+    font-family: boyBoy;
+    font-weight: 900;
+    font-size: 4vw;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 5vw;
+    color: whitesmoke;
+    /* background-color: red; */
+}
+#heading1 h1{
+    text-transform: uppercase;
+}
+#heading1 h1:nth-child(2)
+{
+    padding: 0 1.5vw;
+    background-color: #fb5607;
+    color: black;
+    rotate: -3deg;
+}
+#subheading{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7vw;
+    margin-top: 2.5vw;
+}
+#homeBtn{
+    font-size: 1.6vw;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: Clash;
+    letter-spacing: 1.7px;
+    color: whitesmoke;
+    rotate: -3deg;
+    margin-top: 10vh;
+}
+#allMission{
+    font-family: NunitoSans;
+    font-size: 1vw;
+    font-weight: 900;
+    background-color: greenyellow;
+    color: black;
+    text-transform: uppercase;
+    padding: 0.5vw 1.7vw;
+    rotate: -3deg;
+    margin-bottom: 5vh;
+}
+
+.scroll {
+  margin-top: 2vw;
+  height: 40vh;
+  overflow: hidden;
+  position: relative;
+  transform-origin: left;
+  rotate: -3deg;
+}
+
+.scroll-track1 {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 10s linear infinite;
+  height: 40vh;
+}
+.scroll-track2 {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 10s linear infinite reverse;
+  height: 40vh;
+}
+
+.scroll img {
+  height: 100%;
+  object-fit: cover;
+  margin-right: 2vw;
+  flex-shrink: 0;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
