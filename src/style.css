@@ -34,18 +34,39 @@ html,body{
     width: 100%;
     overflow-x: hidden;
     position: relative;
+    background-color: #0b090a;
 }
 
 #animationPage{
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    background-color: lightblue;
+    background-color: transparent;
     position: absolute;
     top: 0;
     left: 0;
     pointer-events:none;
-    display: none;
+    z-index: 2;    
+}
+
+#animate1{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: start;
+    background-color: transparent;
+}
+#animate2{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: end;
+    background-color: transparent;
+}
+#animationPage .block{
+    flex: 1;
+    background-color: cornflowerblue;
+    height: 0%;
 }
 
 main{
@@ -54,23 +75,28 @@ main{
 }
 
 #navbar{
-    background-color: black;
     color: white;
-    font-family: Clash;
-    font-weight: 300;
-    font-size: 1.5vw;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: center;
     padding: 0.5vw;
-    column-gap: 1vw;
+    column-gap: 5vw;
     cursor: pointer;
+}
+#navbar h3{
+    font-family: Cabinet;
+    font-weight: 300;
+    font-size: 1vw;
+}
+#navbar h3:hover {
+    color: bisque;
+    transform: scale(1.2);
+    transition: all 0.3s ease-in-out;
 }
 
 #hero{
-    height: 60vh;
+    height: 100vh;
     width: 100vw;
-    background-color: yellowgreen;
     color: white;
     display: flex;
     align-items: center;
