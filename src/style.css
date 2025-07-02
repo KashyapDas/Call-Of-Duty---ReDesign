@@ -1,12 +1,79 @@
+@font-face {
+    font-family: boyBoy;
+    src: url(../font/boyBoy.woff2);
+}
+
+@font-face {
+    font-family: Cabinet;
+    src: url(../font/CabinetGrotesk.ttf);
+}
+
+@font-face {
+    font-family: Clash;
+    src: url(../font/ClashDisplay.ttf);
+}
+
+@font-face {
+    font-family: file;
+    src: url(../font/file.woff2);
+}
+
+@font-face {
+    font-family: NunitoSans;
+    src: url(../font/NunitoSans.ttf);
+}
+
 *{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html,body{
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+#animationPage{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: lightblue;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events:none;
+    display: none;
+}
+
+main{
+    height: 100%;
+    width: 100%;
+}
+
+#navbar{
+    background-color: black;
+    color: white;
+    font-family: Clash;
+    font-weight: 300;
+    font-size: 1.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 0.5vw;
+    column-gap: 1vw;
+    cursor: pointer;
+}
+
+#hero{
+    height: 60vh;
+    width: 100vw;
+    background-color: yellowgreen;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
