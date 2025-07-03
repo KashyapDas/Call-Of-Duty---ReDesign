@@ -37,6 +37,7 @@ html,body{
     background-color: #0b090a;
 }
 
+
 body::-webkit-scrollbar{
     display: none;
 }
@@ -111,9 +112,9 @@ main{
   position: relative;
   will-change: transform;
 }
-/* #contentPage::-webkit-scrollbar{
+#contentPage::-webkit-scrollbar{
     display: none;
-} */
+}
 #heading1{
     font-family: boyBoy;
     font-weight: 900;
@@ -230,14 +231,63 @@ main{
   object-fit: cover;
   will-change: transform;
 }
-
-
+/* page 1 - overview characterizoation */
 #page1{
     height : 100vh;
     width: 100vw;
-    background-color: red;
+    background-color: #0B090A;
     overflow-x: hidden;
+    margin-top: 5vw;
+    position: relative;
 }
+#page1Head{
+    margin-top: 2vw;
+}
+.page1Heading{
+    display: flex;
+    justify-content: center;
+    font-family: file;
+    font-size: 13vw;
+    line-height: 170px;
+    font-weight: 100;
+    color: whitesmoke;
+}
+.pic1{
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    transform: translateX(-20%);
+    background-color: red;
+    width: 15%;
+    height: 30%;
+    border-radius: 7px;
+    rotate: -25deg;
+    opacity: 0;
+}
+.pic2{
+    position: absolute;
+    top: 30%;
+    right: 10%;
+    transform: translateX(-10%);
+    background-color: red;
+    width: 15%;
+    height: 30%;
+    border-radius: 7px;
+    rotate: 25deg;
+    opacity: 0;
+}
+#cards1{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+#cards2{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
 
 
 #franchises{
