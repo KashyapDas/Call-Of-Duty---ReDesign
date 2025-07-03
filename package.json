@@ -12,6 +12,8 @@
     "vite": "^7.0.0"
   },
   "dependencies": {
-    "gsap": "^3.13.0"
+    "@barba/core": "^2.10.3",
+    "gsap": "^3.13.0",
+    "jquery": "^3.7.1"
   }
 }

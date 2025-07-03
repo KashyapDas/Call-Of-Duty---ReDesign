@@ -39,18 +39,6 @@ links.forEach((tab) => {
     if (tab.textContent === "Home") {
       mainContent.innerHTML = getHomeHTML();
       requestAnimationFrame(() => initializeScrollAnimation());
-      gsap.to(".pic1",{
-        opacity : 1,
-        top : "8%",
-        duration : 0.4,
-        delay : 0.2,
-        scrollTrigger : {
-          trigger : "#contentPage",
-          start : "top 80%",
-          end : "top 20%",
-          markers : true
-        }
-      })
     } else if (tab.textContent === "Franchises") {
       mainContent.innerHTML = `<h1 id="franchises">Franchises</h1>`;
     } else if (tab.textContent === "Updates") {
@@ -234,11 +222,58 @@ function getHomeHTML() {
       <h2 class="page1Heading">WARZONE STRIKE</h2>
       <div class="pic1">
         <img src="./images/pic5.jpg" id="cards1">
-          
       </div>
       <div class="pic2">
         <img src="./images/pic1.jpg" id="cards2">
       </div>
+      <footer id="homeFooter">
+        <div id="homeText">
+            <h1>Legal</h1>
+            <h1>Terms of use</h1>
+            <h1>Privacy policy</h1>
+            <h1>Carrers</h1>
+            <h1>Cookie Policy</h1>
+            <h1>Support</h1>
+            <h1>Code of Contact</h1>
+            <h1>Your privacy choises</h1>
+        </div>
+        <!-- <div id="hr"></div> -->
+      </footer>
+    </div>
+    <div id="footerLogos"> 
+        <div id="imgDiv">
+            <img src="./logos/activision-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/atvi-shanghai-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/beenox-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/demonware-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/raven-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/raven-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/solid-state-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/treyarch-logo.png" />
+        </div>
+    </div>
+    <div id="licence">
+        <div id="licenceImage">
+            <img src="./logos/esrb-privacy.jpg" />
+           <img src="./logos/cod-hub-esrb-en.png" />
+        </div>
+        <p id="footerText">
+            <span>© 2024-2025 Activision Publishing, Inc. ACTIVISION, CALL OF DUTY, CALL OF DUTY LEAGUE, MODERN WARFARE, CALL OF DUTY BLACK OPS, CALL OF DUTY WARZONE, and CALL OF DUTY VANGUARD are trademarks of Activision Publishing, Inc. All other trademarks and trade names are the property of their respective owners.</span>
+        </p>
     </div>
   `;
 }
@@ -247,7 +282,7 @@ function getHomeHTML() {
 function triggerPicAnimation() {
   gsap.to(".pic1", {
     opacity: 1,
-    top: "2%",
+    top: "10%",
     duration: 0.6,
     ease: "power2.out",
     scrollTrigger : {
@@ -255,12 +290,13 @@ function triggerPicAnimation() {
       scroller : "#page1",
       start : "top 40%",
       end : "top 10%",
+      markers : false
     }
   });
 
   gsap.to(".pic2", {
     opacity: 1,
-    top: "8%",
+    top: "15%",
     duration: 0.6,
     ease: "power2.out",
     scrollTrigger : {
@@ -268,6 +304,7 @@ function triggerPicAnimation() {
       scroller : "#page1",
       start : "top 40%",
       end : "top 10%",
+      markers : false
     }
   });
 }
