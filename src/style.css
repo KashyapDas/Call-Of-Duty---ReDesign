@@ -1,12 +1,409 @@
+@font-face {
+    font-family: boyBoy;
+    src: url(../font/boyBoy.woff2);
+}
+
+@font-face {
+    font-family: Cabinet;
+    src: url(../font/CabinetGrotesk.ttf);
+}
+
+@font-face {
+    font-family: Clash;
+    src: url(../font/ClashDisplay.ttf);
+}
+
+@font-face {
+    font-family: file;
+    src: url(../font/file.woff2);
+}
+
+@font-face {
+    font-family: NunitoSans;
+    src: url(../font/NunitoSans.ttf);
+}
+
 *{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html,body{
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    background-color: #0b090a;
+}
+
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+#animationPage{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events:none;
+    z-index: 2;    
+}
+
+#animate1{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: start;
+    background-color: transparent;
+}
+#animate2{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: end;
+    background-color: transparent;
+}
+#animationPage .block{
+    flex: 1;
+    background-color: #FB5607;
+    height: 0%;
+}
+
+main{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+#navbar{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5vw;
+    column-gap: 5vw;
+    cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+#navbar h3{
+    font-family: Cabinet;
+    font-weight: 300;
+    font-size: 1vw;
+}
+#navbar h3:hover {
+    color: bisque;
+    transform: scale(1.2);
+    transition: all 0.3s ease-in-out;
+}
+#contentPage {
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  will-change: transform;
+}
+#contentPage::-webkit-scrollbar{
+    display: none;
+}
+#heading1{
+    font-family: boyBoy;
+    font-weight: 900;
+    font-size: 4vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vw;
+    color: whitesmoke;
+}
+#heading1 h1{
+    text-transform: uppercase;
+}
+#heading1 h1:nth-child(2)
+{
+    padding: 0 1.5vw;
+    background-color: #fb5607;
+    color: black;
+    rotate: -3deg;
+}
+#subheading{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7vw;
+    margin-top: 2.5vw;
+}
+#homeBtn{
+    font-size: 1.6vw;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: Clash;
+    letter-spacing: 1.7px;
+    color: whitesmoke;
+    rotate: -3deg;
+    margin-top: 10vh;
+}
+#allMission{
+    font-family: NunitoSans;
+    font-size: 1vw;
+    font-weight: 900;
+    background-color: greenyellow;
+    color: black;
+    text-transform: uppercase;
+    padding: 0.5vw 1.7vw;
+    rotate: -3deg;
+    margin-bottom: 5vh;
+}
+
+.scroll {
+  margin-top: 2vw;
+  height: 40vh;
+  overflow: hidden;
+  position: relative;
+  transform-origin: left;
+  rotate: -3deg;
+}
+
+.scroll-track1 {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 10s linear infinite;
+  height: 40vh;
+}
+.scroll-track2 {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 10s linear infinite reverse;
+  height: 40vh;
+}
+
+.scroll img {
+  height: 100%;
+  object-fit: cover;
+  margin-right: 2vw;
+  flex-shrink: 0;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+#storyWrapper {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  will-change: transform;
+}
+
+#storyTelling {
   height: 100%;
   width: 100%;
-  overflow-x: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+#canvasImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  will-change: transform;
+}
+/* page 1 - overview characterizoation */
+#page1{
+    height : fit-content;
+    width: 100vw;
+    background-color: #0B090A;
+    overflow-x: hidden;
+    margin-top: 1vw;
+    position: relative;
+}
+#page1Head{
+    margin-top: 2.5vw;
+}
+.page1Heading{
+    display: flex;
+    justify-content: center;
+    font-family: file;
+    font-size: 13vw;
+    line-height: 170px;
+    font-weight: 100;
+    color: whitesmoke;
+}
+.pic1{
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    transform: translateX(-20%);
+    /* background-color: red; */
+    width: 15%;
+    height: 50%;
+    border-radius: 7px;
+    rotate: -25deg;
+    opacity: 0;
+}
+.pic2{
+    position: absolute;
+    top: 30%;
+    right: 10%;
+    transform: translateX(-10%);
+    /* background-color: red; */
+    width: 15%;
+    height: 50%;
+    border-radius: 7px;
+    rotate: 25deg;
+    opacity: 0;
+}
+#cards1{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+#cards2{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+#homeFooter{
+    margin-top: 5vw;
+    height: fit-content;
+    width: 100vw;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0vw 0.3vw;
+    /* background-color: blue; */
+    position: relative;
+}
+#homeText{
+    /* background-color: green; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+#homeText h1{
+    width: 20%;
+    white-space: nowrap;
+    color: white;
+    font-family: Cabinet;
+    font-size: 1.3vw;
+    cursor: pointer;
+}
+
+#footerLogos{
+    width: 100vw;
+    min-height: 40vh;
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    column-gap: 2vw;
+    flex-wrap: wrap;
+    padding: 2vw;
+}
+#imgDiv{
+    height: 10vh;
+    width: 20vw;
+    background-color: black;
+    padding: 0.5vw;
+}
+#imgDiv img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+#licence{
+    width: 100vw;
+    height: fit-content;
+    background-color: black;
+    position: relative;
+}
+#licenceImage{
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1.5vw;
+}
+
+#licenceImage img:nth-child(1){
+    width: 10vh;
+    height: 15vh;
+    background-size: contain;
+}
+#licenceImage img:nth-child(2){
+    width: 30vh;
+    height: 20vh;
+    background-size: contain;
+}
+#footerText{
+    margin-top: -2vw;
+    padding: 2vw;
+    width: 100%;
+    text-align: center;
+    color: whitesmoke;
+    font-family: Clash;
+    font-size: 1vw;
+    font-weight: 300;
+}
+
+#franPage1{
+    height: 100%;
+    width: 100vw;
+    color: whitesmoke;
+}
+#firstDiv
+{
+    margin-top: 5vw;
+    height: fit-content;
+    width: 100%;
+    padding: 0vw 2vw;
+}
+#firstDiv h1{
+    color: whitesmoke;
+    font-family: Clash;
+    font-size: 9vw;
+    text-transform: uppercase;
+}
+#secondDiv{
+    height: 30vh;
+    width: 30vw;
+    overflow: hidden;
+}
+#secondDiv img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
 }
 
