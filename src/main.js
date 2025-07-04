@@ -40,7 +40,21 @@ links.forEach((tab) => {
       mainContent.innerHTML = getHomeHTML();
       requestAnimationFrame(() => initializeScrollAnimation());
     } else if (tab.textContent === "Franchises") {
-      mainContent.innerHTML = `<h1 id="franchises">Franchises</h1>`;
+      mainContent.innerHTML = getFranchires();
+      const tl = gsap.timeline();
+      tl.to("#firstDiv h1",{
+        color : "red",
+        duration : 2,
+        delay : 1,
+        ease : "back.in"
+      })
+      tl.from("#firstDiv h1",{
+        color : "white",
+        duration : 2,
+        delay : 1,
+        ease : "back.in"
+      })
+      // You should run all the franchies gsap and locomotive fnc and logic here
     } else if (tab.textContent === "Updates") {
       mainContent.innerHTML = `<div id="hero"><h1>Updates</h1></div>`;
     } else if (tab.textContent === "Soldiers") {
@@ -278,6 +292,21 @@ function getHomeHTML() {
   `;
 }
 
+function getFranchires()
+{
+  return `
+    <div id="franPage1">
+      <div id="firstDiv">
+        <h1>SixMorevodka</h1>
+      </div>
+      <div id="secondDiv">
+        <img src="./images/image1.jpg"  />
+      </div>
+    </div>
+  
+  `
+}
+
 
 function triggerPicAnimation() {
   gsap.to(".pic1", {
@@ -308,3 +337,4 @@ function triggerPicAnimation() {
     }
   });
 }
+
