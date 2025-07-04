@@ -41,20 +41,7 @@ links.forEach((tab) => {
       requestAnimationFrame(() => initializeScrollAnimation());
     } else if (tab.textContent === "Franchises") {
       mainContent.innerHTML = getFranchires();
-      const tl = gsap.timeline();
-      tl.to("#firstDiv h1",{
-        color : "red",
-        duration : 2,
-        delay : 1,
-        ease : "back.in"
-      })
-      tl.from("#firstDiv h1",{
-        color : "white",
-        duration : 2,
-        delay : 1,
-        ease : "back.in"
-      })
-      // You should run all the franchies gsap and locomotive fnc and logic here
+      getFranchiresAnimation();
     } else if (tab.textContent === "Updates") {
       mainContent.innerHTML = `<div id="hero"><h1>Updates</h1></div>`;
     } else if (tab.textContent === "Soldiers") {
@@ -307,6 +294,22 @@ function getFranchires()
   `
 }
 
+function getFranchiresAnimation()
+{
+  const tl = gsap.timeline();
+      tl.to("#firstDiv h1",{
+        color : "red",
+        duration : 2,
+        delay : 1,
+        ease : "back.in"
+      })
+      tl.from("#firstDiv h1",{
+        color : "white",
+        duration : 2,
+        delay : 1,
+        ease : "back.in"
+      })
+}
 
 function triggerPicAnimation() {
   gsap.to(".pic1", {
