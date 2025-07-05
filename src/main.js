@@ -40,7 +40,7 @@ links.forEach((tab) => {
       mainContent.innerHTML = getHomeHTML();
       requestAnimationFrame(() => initializeScrollAnimation());
     } else if (tab.textContent === "Franchises") {
-      mainContent.innerHTML = getFranchires();
+      mainContent.innerHTML = getFranchies();
       getFranchiresAnimation();
     } else if (tab.textContent === "Updates") {
       mainContent.innerHTML = `<div id="hero"><h1>Updates</h1></div>`;
@@ -330,19 +330,6 @@ function getFranchies()
 
 function getFranchiresAnimation()
 {
-  const tl = gsap.timeline();
-      tl.to("#firstDiv h1",{
-        color : "red",
-        duration : 2,
-        delay : 1,
-        ease : "back.in"
-      })
-      tl.from("#firstDiv h1",{
-        color : "white",
-        duration : 2,
-        delay : 1,
-        ease : "back.in"
-      })
 }
 
 function triggerPicAnimation() {
