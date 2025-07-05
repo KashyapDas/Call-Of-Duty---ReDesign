@@ -279,7 +279,7 @@ function getHomeHTML() {
   `;
 }
 
-function getFranchires()
+function getFranchies()
 {
   return `
     <div id="franPage1">
@@ -287,8 +287,42 @@ function getFranchires()
         <h1>SixMorevodka</h1>
       </div>
       <div id="secondDiv">
-        <img src="./images/image1.jpg"  />
+        <h5>Commonly</h5>
       </div>
+      <div id="thirdDiv">
+        <h1>IsABerlin-</h1>
+      </div>
+      <div id="fourthDiv">  
+        <h1>BasedForArt</h1>
+      </div>
+      <div id="fifthDiv">
+        <img src="">
+        <h1>PurveyorConceptAnd</h1>
+      </div>
+      <div id="sixthDiv">
+      </div>
+      <div id="seventhDiv">
+      </div>
+      <div id="eighthDiv">
+      </div>
+      <div id="ninthDiv">
+      </div>
+      <div id="tenthDiv">
+      </div>
+      <div id="eleventhDiv">
+      </div>
+      <div id="twelvthDiv">
+      </div>
+      <div id="thirteenthDiv">
+      </div>
+      <div id="fourteenthDiv">
+      </div>
+      <div id="fifteenthDiv">
+      </div>
+      <div id="">
+      </div>
+
+
     </div>
   
   `
