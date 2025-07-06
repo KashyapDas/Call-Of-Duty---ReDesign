@@ -7,6 +7,8 @@ ScrollTrigger.defaults({
 // global fecthing
 const links = document.querySelectorAll(".link");
 const mainContent = document.querySelector("#contentPage");
+const navIcon = document.querySelector("#clickNav");
+const mobileNav = document.querySelector("#mobileNav");
 
 // Enhanced Franchise data with more details
 const franchiseData = [
@@ -114,17 +116,14 @@ function preventKeyScroll(e) {
 // default content loaded when the html render
 document.addEventListener("DOMContentLoaded", () => {
   mainContent.innerHTML = getHomeHTML();
+  disableScroll();
   // Defer init to next frame to avoid layout shift
   requestAnimationFrame(() => initializeScrollAnimation());
 });
 
 // page transition with the dynamic content pushing based on the navbar links
-links.forEach((tab) => {
-  tab.addEventListener("click", async (e) => {
-    e.preventDefault();
-    disableScroll();
-    await animatePages();
-
+const pageTransition = async (tab)=>{
+  // content change based on the link clicks
     if (tab.textContent === "Home") {
       mainContent.innerHTML = getHomeHTML();
       requestAnimationFrame(() => initializeScrollAnimation());
@@ -139,12 +138,81 @@ links.forEach((tab) => {
     } else if (tab.textContent === "Soldiers") {
       mainContent.innerHTML = `<div id="hero"><h1>Soldiers</h1></div>`;
     }
-
+    // Page out transition
     await new Promise((r) => setTimeout(r, 500));
     await animateOutPages();
     enableScroll();
+}
+// do page transition and navbar transiton according to the mobile views
+const mediaQuery = window.matchMedia("(max-width: 480px)");
+if (mediaQuery.matches) {
+  // This block runs if the screen width is 480px or less
+    links.forEach((tab) => {
+  tab.addEventListener("click", async (e) => {
+    e.preventDefault();
+    disableScroll();
+    // Page in transition
+    await animatePages();
+    await gsap.to(mobileNav,{
+    opacity : 0,
+    duration : 0.2,
+    ease : "power4.inOut",
+    onStart : () =>{
+      navIcon.classList.remove("ri-menu-2-fill"),
+      navIcon.classList.add("ri-menu-3-fill")
+      },
+      onComplete : () => {
+      // left : "100%",
+      mobileNav.style.left = "100%"
+    }
+    })
+    pageTransition(tab);
   });
 });
+} 
+else {
+  links.forEach((tab) => {
+  tab.addEventListener("click", async (e) => {
+    e.preventDefault();
+    disableScroll();
+    // Page in transition
+    await animatePages();
+    pageTransition(tab);
+  });
+});
+}
+
+// mobile navbar transition
+navIcon.addEventListener("click",(dets)=>{
+  // const tl = gsap.timeline();
+  // check which class the icon has
+  if(navIcon.classList.contains("ri-menu-3-fill"))
+  {
+    gsap.to(mobileNav,{
+    left : "0%",
+    duration : 0.2,
+    ease : "power4.inOut",
+    onStart : () =>{
+      navIcon.classList.remove("ri-menu-3-fill"),
+      navIcon.classList.add("ri-menu-2-fill")
+      mobileNav.style.opacity = "100"  
+    }
+    })
+  }
+  if(navIcon.classList.contains("ri-menu-2-fill"))
+  {
+    gsap.to(mobileNav,{
+    left : "100%",
+    duration : 0.2,
+    ease : "power4.inOut",
+    onStart : () =>{
+      navIcon.classList.remove("ri-menu-2-fill"),
+      navIcon.classList.add("ri-menu-3-fill")
+      mobileNav.style.opacity = "0"  
+    }
+    })
+  }
+})
 
 // Page transition in aniamtion
 async function animatePages() {
@@ -179,8 +247,12 @@ async function animateOutPages() {
 }
 
 function initializeScrollAnimation() {
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill()); //  cleanup
+
   const canvas = document.getElementById("canvasImage");
   if (!canvas) return;
+
+  disableScroll(); // prevent scroll during image load
 
   const ctx = canvas.getContext("2d");
   const dpr = window.devicePixelRatio || 1;
@@ -220,22 +292,24 @@ function initializeScrollAnimation() {
     ctx.drawImage(img, offsetX, offsetY, newWidth, newHeight);
   }
 
-  function preloadImages() {
-    for (let i = 1; i <= framesValues.maxIndex; i++) {
-      const img = new Image();
-      img.src = `./frame/frame_${i.toString().padStart(4, "0")}.jpeg`;
-      img.onload = () => {
-        if (i === 1) drawImage(1); // draw immediately
-        if (++loadedImages === framesValues.maxIndex) {
-          requestAnimationFrame(() => {
-            setupScrollTrigger();
-            ScrollTrigger.refresh();
-          });
-        }
-      };
-      images.push(img);
-    }
+function preloadImages() {
+  for (let i = 1; i <= framesValues.maxIndex; i++) {
+    const img = new Image();
+    img.src = `./frame/frame_${i.toString().padStart(4, "0")}.jpeg`;
+    img.onload = () => {
+      if (i === 1) drawImage(1);
+      loadedImages++;
+      if (loadedImages === framesValues.maxIndex) {
+        requestAnimationFrame(() => {
+          setupScrollTrigger();
+          ScrollTrigger.refresh();
+          enableScroll(); // ✅ only after everything is ready
+        });
+      }
+    };
+    images.push(img);
   }
+}
 
   function setupScrollTrigger() {
   const scrollLength = framesValues.maxIndex * 4.5;
