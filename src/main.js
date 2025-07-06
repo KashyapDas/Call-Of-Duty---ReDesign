@@ -402,6 +402,157 @@ function getFranchises() {
             <div class="stat-progress"></div>
           </div>
         </div>
+<<<<<<< HEAD
+=======
+      </div>
+
+      <!-- Filter Navigation -->
+      <div id="franchiseFilters">
+        <div class="filter-container">
+          <button class="filter-btn active" data-filter="all">All Franchises</button>
+          <button class="filter-btn" data-filter="active">Active</button>
+          <button class="filter-btn" data-filter="legacy">Legacy</button>
+          <button class="filter-btn" data-filter="live">Live Service</button>
+        </div>
+      </div>
+
+      <!-- Premium Franchise Cards Grid -->
+      <div id="franchisesGrid">
+        <div class="grid-container">
+          ${franchiseData.map((franchise, index) => `
+            <div class="franchise-card" data-index="${index}" data-status="${franchise.status.toLowerCase()}" data-category="${franchise.category.toLowerCase().replace(' ', '-')}">
+              <div class="card-background">
+                <img src="${franchise.image}" alt="${franchise.title}" class="card-bg-image">
+                <div class="card-overlay"></div>
+              </div>
+              
+              <div class="card-content">
+                <div class="card-header">
+                  <div class="card-status-badge ${franchise.status.toLowerCase()}">${franchise.status}</div>
+                  <div class="card-rating">
+                    <span class="rating-star">★</span>
+                    <span class="rating-value">${franchise.rating}</span>
+                  </div>
+                </div>
+                
+                <div class="card-main">
+                  <h3 class="card-title">${franchise.title}</h3>
+                  <h4 class="card-subtitle">${franchise.subtitle}</h4>
+                  <p class="card-description">${franchise.description}</p>
+                  
+                  <div class="card-stats">
+                    <div class="stat">
+                      <span class="stat-label">Players</span>
+                      <span class="stat-value">${franchise.players}</span>
+                    </div>
+                    <div class="stat">
+                      <span class="stat-label">Released</span>
+                      <span class="stat-value">${franchise.year}</span>
+                    </div>
+                    <div class="stat">
+                      <span class="stat-label">Category</span>
+                      <span class="stat-value">${franchise.category}</span>
+                    </div>
+                  </div>
+                  
+                  <div class="card-features">
+                    ${franchise.features.map(feature => `
+                      <span class="feature-tag">${feature}</span>
+                    `).join('')}
+                  </div>
+                </div>
+                
+                <div class="card-actions">
+                  <button class="btn-card-primary">Play Now</button>
+                  <button class="btn-card-secondary">Learn More</button>
+                  <button class="btn-card-icon">
+                    <span class="icon">❤️</span>
+                  </button>
+                </div>
+              </div>
+              
+              <div class="card-hover-effect"></div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Featured Showcase -->
+      <div id="featuredShowcase">
+        <div class="showcase-container">
+          <div class="showcase-content">
+            <div class="showcase-badge">FEATURED EXPERIENCE</div>
+            <h2 class="showcase-title">Modern Warfare III</h2>
+            <h3 class="showcase-subtitle">The Future of Tactical Combat</h3>
+            <p class="showcase-description">
+              Experience the most advanced Call of Duty ever created. With cutting-edge AI, 
+              photorealistic graphics, and revolutionary gameplay mechanics that blur the line 
+              between gaming and reality.
+            </p>
+            
+            <div class="showcase-features">
+              <div class="feature-item">
+                <div class="feature-icon">🎯</div>
+                <div class="feature-content">
+                  <h4>Advanced AI Combat</h4>
+                  <p>Next-gen enemy intelligence</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">🌍</div>
+                <div class="feature-content">
+                  <h4>Global Multiplayer</h4>
+                  <p>Cross-platform warfare</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-content">
+                  <h4>Real-time Ray Tracing</h4>
+                  <p>Photorealistic lighting</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="showcase-cta">
+              <button class="btn-showcase-primary">Experience Now</button>
+              <button class="btn-showcase-secondary">Watch Gameplay</button>
+            </div>
+          </div>
+          
+          <div class="showcase-visual">
+            <div class="visual-container">
+              <img src="./images/image1.jpg" alt="Modern Warfare III" class="showcase-image">
+              <div class="visual-effects">
+                <div class="effect-particle"></div>
+                <div class="effect-particle"></div>
+                <div class="effect-particle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline Section -->
+      <div id="franchiseTimeline">
+        <div class="timeline-header">
+          <h2>Franchise Evolution</h2>
+          <p>Two decades of innovation and excellence</p>
+        </div>
+        <div class="timeline-container">
+          <div class="timeline-line"></div>
+          ${franchiseData.map((franchise, index) => `
+            <div class="timeline-item" data-year="${franchise.year}">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <div class="timeline-year">${franchise.year}</div>
+                <h3>${franchise.title}</h3>
+                <p>${franchise.subtitle}</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+>>>>>>> 322284f57993b6a63fc5b862b7c7a65a4c2f1cf1
       </div>
 
       <!-- Filter Navigation -->
