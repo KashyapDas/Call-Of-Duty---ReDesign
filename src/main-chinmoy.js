@@ -4,7 +4,7 @@ ScrollTrigger.defaults({
   scroller: "#contentPage",
 });
 
-// global fecthing
+// global fetching
 const links = document.querySelectorAll(".link");
 const mainContent = document.querySelector("#contentPage");
 
@@ -118,7 +118,7 @@ links.forEach((tab) => {
   });
 });
 
-// Page transition in aniamtion
+// Page transition in animation
 async function animatePages() {
   return Promise.all([
     gsap.to("#animate1 div", {
@@ -135,7 +135,7 @@ async function animatePages() {
   ]);
 }
 
-// Page transnition out animation
+// Page transition out animation
 async function animateOutPages() {
   return Promise.all([
     gsap.to("#animate1 div", {
@@ -211,35 +211,32 @@ function initializeScrollAnimation() {
   }
 
   function setupScrollTrigger() {
-  const scrollLength = framesValues.maxIndex * 4.5;
+    const scrollLength = framesValues.maxIndex * 4.5;
 
-  gsap.to(framesValues, {
-    currentIndex: framesValues.maxIndex,
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#storyWrapper",
-      start: "top top",
-      end: `+=${scrollLength}`,
-      scrub: 0.5,
-      pin: "#storyWrapper",
-      pinSpacing: true,
-      pinType: "transform",
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-
-      // 👉 This is the key
-      onLeave: () => triggerPicAnimation(),
-    },
-    onUpdate: () => {
-      const frame = Math.floor(framesValues.currentIndex);
-      if (frame !== lastFrame) {
-        drawImage(frame);
-        lastFrame = frame;
-      }
-    },
-  });
-}
-
+    gsap.to(framesValues, {
+      currentIndex: framesValues.maxIndex,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#storyWrapper",
+        start: "top top",
+        end: `+=${scrollLength}`,
+        scrub: 0.5,
+        pin: "#storyWrapper",
+        pinSpacing: true,
+        pinType: "transform",
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onLeave: () => triggerPicAnimation(),
+      },
+      onUpdate: () => {
+        const frame = Math.floor(framesValues.currentIndex);
+        if (frame !== lastFrame) {
+          drawImage(frame);
+          lastFrame = frame;
+        }
+      },
+    });
+  }
 
   let loadedImages = 0;
   preloadImages();
@@ -304,7 +301,6 @@ function getHomeHTML() {
             <h1>Code of Contact</h1>
             <h1>Your privacy choises</h1>
         </div>
-        <!-- <div id="hr"></div> -->
       </footer>
     </div>
     <div id="footerLogos"> 
@@ -551,8 +547,6 @@ function getFranchises() {
           `).join('')}
         </div>
       </div>
-
-
     </div>
   `;
 }
@@ -814,12 +808,12 @@ function triggerPicAnimation() {
     top: "10%",
     duration: 0.6,
     ease: "power2.out",
-    scrollTrigger : {
-      trigger : ".pic1",
-      scroller : "#page1",
-      start : "top 40%",
-      end : "top 10%",
-      markers : false
+    scrollTrigger: {
+      trigger: ".pic1",
+      scroller: "#page1",
+      start: "top 40%",
+      end: "top 10%",
+      markers: false
     }
   });
 
@@ -828,12 +822,12 @@ function triggerPicAnimation() {
     top: "15%",
     duration: 0.6,
     ease: "power2.out",
-    scrollTrigger : {
-      trigger : ".pic2",
-      scroller : "#page1",
-      start : "top 40%",
-      end : "top 10%",
-      markers : false
+    scrollTrigger: {
+      trigger: ".pic2",
+      scroller: "#page1",
+      start: "top 40%",
+      end: "top 10%",
+      markers: false
     }
   });
 }
