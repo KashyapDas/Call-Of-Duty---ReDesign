@@ -134,7 +134,9 @@ const pageTransition = async (tab)=>{
         initializeFranchiseInteractions();
       });
     } else if (tab.textContent === "Updates") {
-      mainContent.innerHTML = `<div id="hero"><h1>Updates</h1></div>`;
+      mainContent.innerHTML = getUpdates();
+      //requestAnimationFrame(() => {
+        //getFranchisesAnimation()});
     } else if (tab.textContent === "Soldiers") {
       mainContent.innerHTML = `<div id="hero"><h1>Soldiers</h1></div>`;
     }
