@@ -311,16 +311,16 @@ function getHomeHTML() {
             <img src="./logos/atvi-shanghai-logo.png" />
         </div>
         <div id="imgDiv">
-            <img src="./logos/beenox-logo.png" />
+            <img src="./logos/digital-legends-logo.png" />
         </div>
         <div id="imgDiv">
-            <img src="./logos/demonware-logo.png" />
-        </div>
-        <div id="imgDiv">
-            <img src="./logos/raven-logo.png" />
+            <img src="./logos/high-moon-logo.png" />
         </div>
         <div id="imgDiv">
             <img src="./logos/raven-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/infinity-ward-logo.png" />
         </div>
         <div id="imgDiv">
             <img src="./logos/solid-state-logo.png" />
