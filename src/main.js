@@ -253,11 +253,7 @@ function getHomeHTML() {
       <h1>SQUAD READY.</h1>
       <h1>LET'S GO</h1>
     </div>
-    <div id="subheading">
-      <h1 id="homeBtn"><u>Fresh Loadouts</u></h1>
-      <h1 id="allMission">All Missions</h1>
-    </div>
-    <div class="scroll">
+    <div class="scroll" id="firstScroll">
       <div class="scroll-track1">
         ${[...Array(8)]
           .map((_, i) => `<img src="./images/image${i + 1}.jpg"/>`)
