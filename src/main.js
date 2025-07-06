@@ -84,6 +84,33 @@ const franchiseData = [
   }
 ];
 
+// Scroll preventation effect in between the page transition
+function disableScroll() {
+  document.body.style.overflow = "hidden";
+  document.addEventListener('wheel', preventScroll, { passive: false });
+  document.addEventListener('touchmove', preventScroll, { passive: false });
+  document.addEventListener('keydown', preventKeyScroll, false);
+}
+
+function enableScroll() {
+  document.body.style.overflow = "visible";
+  document.removeEventListener('wheel', preventScroll, { passive: false });
+  document.removeEventListener('touchmove', preventScroll, { passive: false });
+  document.removeEventListener('keydown', preventKeyScroll, false);
+}
+
+function preventScroll(e) {
+  e.preventDefault();
+}
+
+function preventKeyScroll(e) {
+  // Block arrow keys, space, page up/down, etc.
+  const keys = [32, 33, 34, 35, 36, 37, 38, 39, 40];
+  if (keys.includes(e.keyCode)) {
+    e.preventDefault();
+  }
+}
+
 // default content loaded when the html render
 document.addEventListener("DOMContentLoaded", () => {
   mainContent.innerHTML = getHomeHTML();
@@ -95,6 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
 links.forEach((tab) => {
   tab.addEventListener("click", async (e) => {
     e.preventDefault();
+    disableScroll();
     await animatePages();
 
     if (tab.textContent === "Home") {
@@ -114,7 +142,7 @@ links.forEach((tab) => {
 
     await new Promise((r) => setTimeout(r, 500));
     await animateOutPages();
-    document.body.style.overflowY = "visible";
+    enableScroll();
   });
 });
 
@@ -125,7 +153,6 @@ async function animatePages() {
       height: "100%",
       duration: 0.3,
       stagger: 0.1,
-      onStart: () => (document.body.style.overflowY = "hidden"),
     }),
     gsap.to("#animate2 div", {
       height: "100%",
