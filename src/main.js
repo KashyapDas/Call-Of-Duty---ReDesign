@@ -1,3 +1,4 @@
+import imagesLoaded from "imagesloaded";
 // register the scrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.defaults({
@@ -116,10 +117,17 @@ function preventKeyScroll(e) {
 // default content loaded when the html render
 document.addEventListener("DOMContentLoaded", () => {
   mainContent.innerHTML = getHomeHTML();
-  disableScroll();
-  // Defer init to next frame to avoid layout shift
-  requestAnimationFrame(() => initializeScrollAnimation());
+
+  // Wait until all images inside #contentPage are fully loaded
+  imagesLoaded("#contentPage", { background: true }, () => {
+    disableScroll();
+    requestAnimationFrame(() => {
+      initializeScrollAnimation();
+      ScrollTrigger.refresh(); // force correct trigger positions
+    });
+  });
 });
+
 
 // page transition with the dynamic content pushing based on the navbar links
 const pageTransition = async (tab)=>{
@@ -134,7 +142,8 @@ const pageTransition = async (tab)=>{
         initializeFranchiseInteractions();
       });
     } else if (tab.textContent === "Updates") {
-      mainContent.innerHTML = getUpdates();
+      // mainContent.innerHTML = getUpdates();
+      mainContent.innerHTML =  `<div>Updates</div>`
       //requestAnimationFrame(() => {
         //getFranchisesAnimation()});
     } else if (tab.textContent === "Soldiers") {
