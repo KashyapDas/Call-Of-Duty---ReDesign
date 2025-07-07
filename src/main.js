@@ -142,8 +142,8 @@ const pageTransition = async (tab)=>{
         initializeFranchiseInteractions();
       });
     } else if (tab.textContent === "Updates") {
-      // mainContent.innerHTML = getUpdates();
-      mainContent.innerHTML =  `<div>Updates</div>`
+      // 
+      mainContent.innerHTML =  getUpdates();
       //requestAnimationFrame(() => {
         //getFranchisesAnimation()});
     } else if (tab.textContent === "Soldiers") {
@@ -944,4 +944,11 @@ function triggerPicAnimation() {
       markers : false
     }
   });
+}
+
+function getUpdates(){
+  return `
+<div>Updates done</div>
+
+`
 }
