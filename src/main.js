@@ -1,15 +1,19 @@
+// use imageLoaded lib to prevent the slow loading of the marque for the 1st the DOM content loaded
+import imagesLoaded from "imagesloaded";
+// global varaible 
+let frameImages = [];
+let framesLoaded = false;
+let preloadPromise = null;
 // register the scrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.defaults({
   scroller: "#contentPage",
 });
-
 // global fecthing
 const links = document.querySelectorAll(".link");
 const mainContent = document.querySelector("#contentPage");
 const navIcon = document.querySelector("#clickNav");
 const mobileNav = document.querySelector("#mobileNav");
-
 // Enhanced Franchise data with more details
 const franchiseData = [
   {
@@ -85,7 +89,6 @@ const franchiseData = [
     features: ["Co-op Mode", "Easter Eggs", "Storyline"]
   }
 ];
-
 // Scroll preventation effect in between the page transition
 function disableScroll() {
   document.body.style.overflow = "hidden";
@@ -93,18 +96,15 @@ function disableScroll() {
   document.addEventListener('touchmove', preventScroll, { passive: false });
   document.addEventListener('keydown', preventKeyScroll, false);
 }
-
 function enableScroll() {
   document.body.style.overflow = "visible";
   document.removeEventListener('wheel', preventScroll, { passive: false });
   document.removeEventListener('touchmove', preventScroll, { passive: false });
   document.removeEventListener('keydown', preventKeyScroll, false);
 }
-
 function preventScroll(e) {
   e.preventDefault();
 }
-
 function preventKeyScroll(e) {
   // Block arrow keys, space, page up/down, etc.
   const keys = [32, 33, 34, 35, 36, 37, 38, 39, 40];
@@ -112,37 +112,64 @@ function preventKeyScroll(e) {
     e.preventDefault();
   }
 }
-
 // default content loaded when the html render
 document.addEventListener("DOMContentLoaded", () => {
   mainContent.innerHTML = getHomeHTML();
-  disableScroll();
-  // Defer init to next frame to avoid layout shift
-  requestAnimationFrame(() => initializeScrollAnimation());
-});
 
+  // Wait until all images inside #contentPage are fully loaded
+  imagesLoaded("#contentPage", { background: true }, () => {
+    disableScroll();
+    requestAnimationFrame(() => {
+      initializeScrollAnimation();
+      ScrollTrigger.refresh(); // force correct trigger positions
+    });
+  });
+});
 // page transition with the dynamic content pushing based on the navbar links
-const pageTransition = async (tab)=>{
-  // content change based on the link clicks
-    if (tab.textContent === "Home") {
-      mainContent.innerHTML = getHomeHTML();
-      requestAnimationFrame(() => initializeScrollAnimation());
-    } else if (tab.textContent === "Franchises") {
-      mainContent.innerHTML = getFranchises();
-      requestAnimationFrame(() => {
-        getFranchisesAnimation();
-        initializeFranchiseInteractions();
-      });
-    } else if (tab.textContent === "Updates") {
-      mainContent.innerHTML = `<div id="hero"><h1>Updates</h1></div>`;
-    } else if (tab.textContent === "Soldiers") {
-      mainContent.innerHTML = `<div id="hero"><h1>Soldiers</h1></div>`;
-    }
-    // Page out transition
+const pageTransition = async (tab) => {
+  if (tab.textContent === "Home") {
+    disableScroll(); // ⛔ Block scroll while loading frames
+    mainContent.innerHTML = getHomeHTML();
+
+    await new Promise((r) => setTimeout(r, 500));
+    await animateOutPages();
+
+    requestAnimationFrame(() => {
+      initializeScrollAnimation(); // ✅ This will enable scroll only after preload completes
+      ScrollTrigger.refresh();
+    });
+
+  } else{
+    // Trigger preload silently in the background
+    preloadFrameImages(); // 🔥 Preload started if not done
+
+    if (tab.textContent === "Franchises") {
+    mainContent.innerHTML = getFranchises();
+
+    await new Promise((r) => setTimeout(r, 500));
+    await animateOutPages();
+
+    requestAnimationFrame(() => {
+      getFranchisesAnimation();
+      initializeFranchiseInteractions();
+      enableScroll(); // ✅ Scroll is safe after all GSAP/DOM are ready
+    });
+
+  } else if (tab.textContent === "Updates") {
+    mainContent.innerHTML = `<div>Updates</div>`;
+
     await new Promise((r) => setTimeout(r, 500));
     await animateOutPages();
     enableScroll();
-}
+  } else if (tab.textContent === "Soldiers") {
+    mainContent.innerHTML = `<div id="hero"><h1>Soldiers</h1></div>`;
+
+    await new Promise((r) => setTimeout(r, 500));
+    await animateOutPages();
+    enableScroll();
+  }
+  }
+};
 // do page transition and navbar transiton according to the mobile views
 const mediaQuery = window.matchMedia("(max-width: 480px)");
 if (mediaQuery.matches) {
@@ -181,7 +208,6 @@ else {
   });
 });
 }
-
 // mobile navbar transition
 navIcon.addEventListener("click",(dets)=>{
   // const tl = gsap.timeline();
@@ -213,7 +239,6 @@ navIcon.addEventListener("click",(dets)=>{
     })
   }
 })
-
 // Page transition in aniamtion
 async function animatePages() {
   return Promise.all([
@@ -229,7 +254,6 @@ async function animatePages() {
     }),
   ]);
 }
-
 // Page transnition out animation
 async function animateOutPages() {
   return Promise.all([
@@ -245,7 +269,7 @@ async function animateOutPages() {
     }),
   ]);
 }
-
+// Implementing the frame based animtion in the home page
 function initializeScrollAnimation() {
   ScrollTrigger.getAll().forEach(trigger => trigger.kill()); //  cleanup
 
@@ -293,6 +317,19 @@ function initializeScrollAnimation() {
   }
 
 function preloadImages() {
+  // Use already preloaded images if available
+  if (framesLoaded && frameImages.length > 0) {
+    images.push(...frameImages);
+    drawImage(1);
+    requestAnimationFrame(() => {
+      setupScrollTrigger();
+      ScrollTrigger.refresh();
+      enableScroll(); // ✅ already ready
+    });
+    return;
+  }
+
+  // fallback to manual preload if not done
   for (let i = 1; i <= framesValues.maxIndex; i++) {
     const img = new Image();
     img.src = `./frame/frame_${i.toString().padStart(4, "0")}.jpeg`;
@@ -303,13 +340,14 @@ function preloadImages() {
         requestAnimationFrame(() => {
           setupScrollTrigger();
           ScrollTrigger.refresh();
-          enableScroll(); // ✅ only after everything is ready
+          enableScroll();
         });
       }
     };
     images.push(img);
   }
 }
+
 
   function setupScrollTrigger() {
   const scrollLength = framesValues.maxIndex * 4.5;
@@ -345,7 +383,33 @@ function preloadImages() {
   let loadedImages = 0;
   preloadImages();
 }
+// Load the images for the first time and then cached it in the global variable array and store it
+function preloadFrameImages() {
+  if (framesLoaded || preloadPromise) return preloadPromise;
 
+  const maxIndex = 1128;
+  let loadedCount = 0;
+  frameImages = [];
+  
+  preloadPromise = new Promise((resolve) => {
+    for (let i = 1; i <= maxIndex; i++) {
+      const img = new Image();
+      img.src = `./frame/frame_${i.toString().padStart(4, "0")}.jpeg`;
+
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === maxIndex) {
+          framesLoaded = true;
+          resolve();
+        }
+      };
+
+      frameImages.push(img);
+    }
+  });
+
+  return preloadPromise;
+}
 // dynamic content of the home page should look like these
 function getHomeHTML() {
   return `
@@ -441,7 +505,7 @@ function getHomeHTML() {
     </div>
   `;
 }
-
+// dynamic content of the franchies page should look like these
 function getFranchises() {
   return `
     <div id="franchisesPage">
@@ -653,7 +717,7 @@ function getFranchises() {
     </div>
   `;
 }
-
+// animatio fnc of the franchies page
 function getFranchisesAnimation() {
   // Clear any existing ScrollTriggers
   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -836,7 +900,7 @@ function getFranchisesAnimation() {
     ease: "power2.inOut"
   });
 }
-
+// ad-on fnc of the animation page
 function initializeFranchiseInteractions() {
   // Filter functionality
   const filterBtns = document.querySelectorAll('.filter-btn');
