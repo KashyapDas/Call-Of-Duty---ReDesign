@@ -10,20 +10,5 @@
   },
   "devDependencies": {
     "vite": "^7.0.0"
-  },
-  "dependencies": {
-    "imagesloaded": "^5.0.0"
-  },
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KashyapDas/Call-Of-Duty---ReDesign.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/KashyapDas/Call-Of-Duty---ReDesign/issues"
-  },
-  "homepage": "https://github.com/KashyapDas/Call-Of-Duty---ReDesign#readme",
-  "description": ""
+  }
 }
