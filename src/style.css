@@ -1488,7 +1488,7 @@ main{
 
 /* ==== UPDATES PAGE STYLES ==== */
 /* ===== CSS Reset & Base Styles ===== */
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -1502,7 +1502,7 @@ html,body {
     line-height: 1.6;
     overflow-x: hidden;
     scroll-behavior: smooth;
-}
+} */
 
 /* ===== CSS Variables ===== */
 :root {
