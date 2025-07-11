@@ -156,7 +156,7 @@ const pageTransition = async (tab) => {
     });
 
   } else if (tab.textContent === "Updates") {
-    mainContent.innerHTML = `<div>Updates</div>`;
+    mainContent.innerHTML = getUpdates();
 
     await new Promise((r) => setTimeout(r, 500));
     await animateOutPages();
