@@ -999,9 +999,211 @@ function triggerPicAnimation() {
   });
 }
 
+// Codes for Update Page.
 function getUpdates(){
   return `
-<div>Updates done</div>
+    <!-- Hero Section with Swiper -->
+    <section id="hero" class="hero-section">
+      <div class="swiper hero-swiper">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <img src="./alligp/mw2-4.png" alt="Slide 1" />
+            <div class="slide-content">
+              <h2>Serene Waters</h2>
+              <p>Feel the calmness of untouched nature.</p>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <img src="./alligp/bo6-1.png" alt="Slide 2" />
+            <div class="slide-content">
+              <h2>Majestic Mountains</h2>
+              <p>Touch the sky and breathe adventure.</p>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <img src="./alligp/aw3.png" alt="Slide 3" />
+            <div class="slide-content">
+              <h2>Enchanted Forest</h2>
+              <p>Wander into a world of green mystery.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Swiper Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Swiper Arrows -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </section>
+    <!-- Card Section -->
+    <div id="update-cards">
+        <div class="card-update"  data-tilt 
+     data-tilt-max="35" 
+     data-tilt-speed="800"
+     data-tilt-glare="true"
+     data-tilt-max-glare="0.4"
+     data-tilt-scale="0.9"
+     data-tilt-easing="cubic-bezier(.03,.98,.52,.99)">
+            <div class="card-video"></div>
+            <div class="card-img">
+                <div class="card-image"></div>
+                <h1>Heading</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero beatae minima temporibus alias suscipit quos, quis, ipsa maxime facilis quibusdam asperiores blanditiis inventore ipsam optio perferendis nam doloremque mollitia, excepturi eligendi aspernatur corrupti modi!</p>
+                <div class="tags">
+                    <h1>
+                        <span>
+                            <img src="" alt="" srcset="">
+                        </span>    
+                        PlayStation
+                    </h1>
+                    <h1>Xbox</h1>
+                    <h1>Stream</h1>
+                </div>
+                <div id="button">
+                    <button>Play Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-update"  data-tilt 
+     data-tilt-max="35" 
+     data-tilt-speed="800"
+     data-tilt-glare="true"
+     data-tilt-max-glare="0.4"
+     data-tilt-scale="0.9"
+     data-tilt-easing="cubic-bezier(.03,.98,.52,.99)">
+            <div class="card-video"></div>
+            <div class="card-img">
+                <div class="card-image"></div>
+                <h1>Heading</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero beatae minima temporibus alias suscipit quos, quis, ipsa maxime facilis quibusdam asperiores blanditiis inventore ipsam optio perferendis nam doloremque mollitia, excepturi eligendi aspernatur corrupti modi!</p>
+                <div class="tags">
+                    <h1>
+                        <span>
+                            <img src="" alt="" srcset="">
+                        </span>    
+                        PlayStation
+                    </h1>
+                    <h1>Xbox</h1>
+                    <h1>Stream</h1>
+                </div>
+                <div id="button">
+                    <button>Play Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-update"  data-tilt 
+     data-tilt-max="35" 
+     data-tilt-speed="800"
+     data-tilt-glare="true"
+     data-tilt-max-glare="0.4"
+     data-tilt-scale="0.9"
+     data-tilt-easing="cubic-bezier(.03,.98,.52,.99)">
+            <div class="card-video"></div>
+            <div class="card-img">
+                <div class="card-image"></div>
+                <h1>Heading</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero beatae minima temporibus alias suscipit quos, quis, ipsa maxime facilis quibusdam asperiores blanditiis inventore ipsam optio perferendis nam doloremque mollitia, excepturi eligendi aspernatur corrupti modi!</p>
+                <div class="tags">
+                    <h1>
+                        <span>
+                            <img src="" alt="" srcset="">
+                        </span>    
+                        PlayStation
+                    </h1>
+                    <h1>Xbox</h1>
+                    <h1>Stream</h1>
+                </div>
+                <div id="button">
+                    <button>Play Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-update"  data-tilt 
+     data-tilt-max="35" 
+     data-tilt-speed="800"
+     data-tilt-glare="true"
+     data-tilt-max-glare="0.4"
+     data-tilt-scale="0.9"
+     data-tilt-easing="cubic-bezier(.03,.98,.52,.99)">
+            <div class="card-video"></div>
+            <div class="card-img">
+                <div class="card-image"></div>
+                <h1>Heading</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero beatae minima temporibus alias suscipit quos, quis, ipsa maxime facilis quibusdam asperiores blanditiis inventore ipsam optio perferendis nam doloremque mollitia, excepturi eligendi aspernatur corrupti modi!</p>
+                <div class="tags">
+                    <h1>
+                        <span>
+                            <img src="" alt="" srcset="">
+                        </span>    
+                        PlayStation
+                    </h1>
+                    <h1>Xbox</h1>
+                    <h1>Stream</h1>
+                </div>
+                <div id="button">
+                    <button>Play Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-update"  data-tilt 
+     data-tilt-max="35" 
+     data-tilt-speed="800"
+     data-tilt-glare="true"
+     data-tilt-max-glare="0.4"
+     data-tilt-scale="0.9"
+     data-tilt-easing="cubic-bezier(.03,.98,.52,.99)">
+            <div class="card-video"></div>
+            <div class="card-img">
+                <div class="card-image"></div>
+                <h1>Heading</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero beatae minima temporibus alias suscipit quos, quis, ipsa maxime facilis quibusdam asperiores blanditiis inventore ipsam optio perferendis nam doloremque mollitia, excepturi eligendi aspernatur corrupti modi!</p>
+                <div class="tags">
+                    <h1>
+                        <span>
+                            <img src="" alt="" srcset="">
+                        </span>    
+                        PlayStation
+                    </h1>
+                    <h1>Xbox</h1>
+                    <h1>Stream</h1>
+                </div>
+                <div id="button">
+                    <button>Play Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-update"  data-tilt 
+     data-tilt-max="35" 
+     data-tilt-speed="800"
+     data-tilt-glare="true"
+     data-tilt-max-glare="0.4"
+     data-tilt-scale="0.9"
+     data-tilt-easing="cubic-bezier(.03,.98,.52,.99)">
+            <div class="card-video"></div>
+            <div class="card-img">
+                <div class="card-image"></div>
+                <h1>Heading</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero beatae minima temporibus alias suscipit quos, quis, ipsa maxime facilis quibusdam asperiores blanditiis inventore ipsam optio perferendis nam doloremque mollitia, excepturi eligendi aspernatur corrupti modi!</p>
+                <div class="tags">
+                    <h1>
+                        <span>
+                            <img src="" alt="" srcset="">
+                        </span>    
+                        PlayStation
+                    </h1>
+                    <h1>Xbox</h1>
+                    <h1>Stream</h1>
+                </div>
+                <div id="button">
+                    <button>Play Now</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
 
-`
+  `;
 }
