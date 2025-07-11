@@ -1485,3 +1485,199 @@ main{
         width: 100%;
     }
 }
+
+/* ==== UPDATES PAGE STYLES ==== */
+/* ===== CSS Reset & Base Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html,body {
+    font-family: 'Rajdhani', sans-serif;
+    background: #0a0a0a;
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* ===== CSS Variables ===== */
+:root {
+    --primary-color: #ff6b35;
+    --secondary-color: #1a1a1a;
+    --accent-color: #ff8c5a;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-muted: #888888;
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --bg-tertiary: #2a2a2a;
+    --gradient-primary: linear-gradient(135deg, #ff6b35, #ff8c5a);
+    --gradient-secondary: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+    --border-radius: 12px;
+    --transition: all 0.3s ease;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 20px 60px rgba(255, 107, 53, 0.2);
+}
+
+/* Swiper js start here */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    overflow-x: hidden;
+    padding: 0vw 10vw;
+    width: 100vw;
+}
+.hero-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.4);
+    z-index: 2;
+}
+.hero-swiper {
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Or contain if that's what you prefer */
+}
+.slide-content {
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  color: white;
+  z-index: 10;
+  max-width: 600px;
+  text-shadow: 2px 2px 4px #000;
+}
+.slide-content h2 {
+  font-size: 3vw;
+  margin: 0 0 0.5rem;
+}
+.slide-content p {
+  font-size: 1.2vw;
+  margin: 0;
+}
+.slide-content h2,
+.slide-content p {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: none;
+  will-change: opacity, transform;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  color: white;
+}
+.swiper-pagination-bullet {
+  background-color: rgba(255, 255, 255, 0.3);
+  opacity: 1;
+}
+.swiper-pagination-bullet-active {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+/* Swiper js end here */
+
+/* Cards section start here */
+#update-cards{
+    min-height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1vw;
+    padding: 2vw 10vw;
+}
+.card-update{
+    height: fit-content;
+    width: 30%;
+    border-radius: 10px;
+    border: 2px solid orangered;
+    position: relative;
+    padding: 1vh;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+.card-video{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    pointer-events: none;
+    opacity: 0%;
+    background-color: greenyellow;
+    height: 100%;
+    width: 100%;
+}
+.card-img{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    opacity: 100;
+}
+.card-image{
+    width: 100%;
+    height: 40vh;
+    background-color: orangered;
+    overflow: hidden;
+}
+.card-img h1{
+    width: 100%;
+    text-align: center;
+    color: rgb(184, 49, 0);
+}
+.card-img p{
+    height: fit-content;
+    font-size: 1.2vw;
+    font-weight: 500;
+    line-height: 2.8vh;
+    text-align: center;
+    color: rgb(229, 114, 72);
+
+}
+.tags{
+    height: fit-content;
+    padding: 1vh;
+    width: 100%;
+    display: flex;
+    margin-top: 3vh;
+}
+.tags h1{
+    font-size: 0.9vw;
+}
+.card-img #button{
+    margin-top: 2vh;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-img #button button{
+    background-color: orangered;
+    color: rgb(92, 25, 1);
+    width: 60%;
+    height: fit-content;
+    padding: 0.5vh 1vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 700;
+    font-size: 1.2vw;
+    border-radius: 6px;
+}
