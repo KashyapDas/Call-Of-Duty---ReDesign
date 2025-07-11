@@ -1000,7 +1000,7 @@ function triggerPicAnimation() {
 }
 
 // Codes for Update Page.
-function getUpdates(){
+function getUpdates() {
   return `
     <!-- Hero Section with Swiper -->
     <section id="hero" class="hero-section">
