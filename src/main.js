@@ -163,6 +163,7 @@ const pageTransition = async (tab) => {
 
   requestAnimationFrame(() => {
       getUpdatesAnimation();
+      // initializeUpdatesInteractions();
     enableScroll();
   });
   }
