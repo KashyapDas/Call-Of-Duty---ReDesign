@@ -160,8 +160,13 @@ const pageTransition = async (tab) => {
 
     await new Promise((r) => setTimeout(r, 500));
     await animateOutPages();
+
+  requestAnimationFrame(() => {
+      getUpdatesAnimation();
     enableScroll();
-  } else if (tab.textContent === "Soldiers") {
+  });
+  }
+  else if (tab.textContent === "Soldiers") {
     mainContent.innerHTML = `<div id="hero"><h1>Soldiers</h1></div>`;
 
     await new Promise((r) => setTimeout(r, 500));
@@ -1003,7 +1008,7 @@ function triggerPicAnimation() {
 function getUpdates() {
   return `
     <!-- Hero Section with Swiper -->
-    <section id="hero" class="hero-section">
+    <div id="hero" class="hero-section">
       <div class="swiper hero-swiper">
         <div class="swiper-wrapper">
           <!-- Slide 1 -->
@@ -1207,3 +1212,103 @@ function getUpdates() {
 
   `;
 }
+
+// Function for animation for update page.
+function getUpdatesAnimation(){  
+
+      const swiper = new Swiper(".hero-swiper", {
+    loop: true,
+    speed: 800, // smoother slide transition
+    observer: true,
+    observeParents: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    },
+    on: {
+      // ✅ Animate the first slide when Swiper is ready
+      init() {
+        animateSlideIn(this);
+      },
+      slideChangeTransitionStart() {
+        animateSlideOut(this);
+      },
+      slideChangeTransitionEnd() {
+        animateSlideIn(this);
+      }
+    }
+  });
+
+  // ✅ Auto-slide every 2 seconds
+  setInterval(() => {
+    swiper.slideNext();
+  }, 2000);
+
+  // ✅ Animate text in
+  function animateSlideIn(swiper) {
+    const activeSlide = swiper.slides[swiper.activeIndex];
+    if (!activeSlide || activeSlide.classList.contains("swiper-slide-duplicate")) return;
+
+    const heading = activeSlide.querySelector("h2");
+    const paragraph = activeSlide.querySelector("p");
+
+    if (!heading || !paragraph) return;
+
+    gsap.killTweensOf([heading, paragraph]);
+    gsap.set([heading, paragraph], {
+      clearProps: "all",
+      opacity: 0,
+      y: 30
+    });
+
+    gsap.to(heading, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: "power2.out"
+    });
+
+    gsap.to(paragraph, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: "power2.out",
+      delay: 0.1
+    });
+  }
+
+  // ✅ Animate text out
+  function animateSlideOut(swiper) {
+    const currentSlide = swiper.slides[swiper.previousIndex];
+    if (!currentSlide || currentSlide.classList.contains("swiper-slide-duplicate")) return;
+
+    const heading = currentSlide.querySelector("h2");
+    const paragraph = currentSlide.querySelector("p");
+
+    if (!heading || !paragraph) return;
+
+    gsap.killTweensOf([heading, paragraph]);
+    gsap.to([heading, paragraph], {
+      opacity: 0,
+      y: -30,
+      duration: 0.4,
+      ease: "power2.in"
+    });
+  }
+}
+
+// ✅ Call the dump function when DOM is ready
+window.addEventListener("load", getUpdatesAnimation);
+VanillaTilt.init(document.querySelectorAll(".card-update"), {
+    max: 35,               // Stronger tilt (default is 15)
+    speed: 800,            // Slower movement for dramatic effect
+    glare: true,           // Enable glare effect
+    "max-glare": 0.4,      // Up to 40% glare
+    scale: 1.05,           // Slight zoom on hover
+    easing: "cubic-bezier(.03,.98,.52,.99)"  // Smooth easing
+  });
+  
