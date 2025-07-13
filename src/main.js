@@ -124,6 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ScrollTrigger.refresh(); // force correct trigger positions
     });
   });
+
 });
 // page transition with the dynamic content pushing based on the navbar links
 const pageTransition = async (tab) => {
@@ -159,13 +160,17 @@ const pageTransition = async (tab) => {
     mainContent.innerHTML = getUpdates();
 
     await new Promise((r) => setTimeout(r, 500));
-    await animateOutPages();
+    
+
+
 
   requestAnimationFrame(() => {
+
       getUpdatesAnimation();
-      // initializeUpdatesInteractions();
+     
     enableScroll();
   });
+  await animateOutPages();
   }
   else if (tab.textContent === "Soldiers") {
     mainContent.innerHTML = `<div id="hero"><h1>Soldiers</h1></div>`;
@@ -1007,309 +1012,11 @@ function triggerPicAnimation() {
 
 // Codes for Update Page.
 function getUpdates() {
-  return `
-    <!-- Hero Section with Swiper -->
-    <div id="hero" class="hero-section">
-      <div class="swiper hero-swiper">
-        <div class="swiper-wrapper">
-          <!-- Slide 1 -->
-          <div class="swiper-slide">
-            <img src="./alligp/mw2-4.png" alt="Slide 1" />
-            <div class="slide-content">
-              <h2>Serene Waters</h2>
-              <p>Feel the calmness of untouched nature.</p>
-            </div>
-          </div>
-          <!-- Slide 2 -->
-          <div class="swiper-slide">
-            <img src="./alligp/bo6-1.png" alt="Slide 2" />
-            <div class="slide-content">
-              <h2>Majestic Mountains</h2>
-              <p>Touch the sky and breathe adventure.</p>
-            </div>
-          </div>
-          <!-- Slide 3 -->
-          <div class="swiper-slide">
-            <img src="./alligp/aw3.png" alt="Slide 3" />
-            <div class="slide-content">
-              <h2>Enchanted Forest</h2>
-              <p>Wander into a world of green mystery.</p>
-            </div>
-          </div>
-        </div>
-        <!-- Swiper Pagination -->
-        <div class="swiper-pagination"></div>
-        <!-- Swiper Arrows -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-      </div>
-    </section>
-    <!-- Card Section -->
-    <div id="update-cards">
-        <div class="card-update"  data-tilt 
-     data-tilt-max="35" 
-     data-tilt-speed="800"
-     data-tilt-glare="true"
-     data-tilt-max-glare="0.4"
-     data-tilt-scale="0.9"
-     data-tilt-easing="cubic-bezier(.03,.98,.52,.99)">
-            <div class="card-video"></div>
-            <div class="card-img">
-                <div class="card-image"></div>
-                <h1>Heading</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero beatae minima temporibus alias suscipit quos, quis, ipsa maxime facilis quibusdam asperiores blanditiis inventore ipsam optio perferendis nam doloremque mollitia, excepturi eligendi aspernatur corrupti modi!</p>
-                <div class="tags">
-                    <h1>
-                        <span>
-                            <img src="" alt="" srcset="">
-                        </span>    
-                        PlayStation
-                    </h1>
-                    <h1>Xbox</h1>
-                    <h1>Stream</h1>
-                </div>
-                <div id="button">
-                    <button>Play Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="card-update"  data-tilt 
-     data-tilt-max="35" 
-     data-tilt-speed="800"
-     data-tilt-glare="true"
-     data-tilt-max-glare="0.4"
-     data-tilt-scale="0.9"
-     data-tilt-easing="cubic-bezier(.03,.98,.52,.99)">
-            <div class="card-video"></div>
-            <div class="card-img">
-                <div class="card-image"></div>
-                <h1>Heading</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero beatae minima temporibus alias suscipit quos, quis, ipsa maxime facilis quibusdam asperiores blanditiis inventore ipsam optio perferendis nam doloremque mollitia, excepturi eligendi aspernatur corrupti modi!</p>
-                <div class="tags">
-                    <h1>
-                        <span>
-                            <img src="" alt="" srcset="">
-                        </span>    
-                        PlayStation
-                    </h1>
-                    <h1>Xbox</h1>
-                    <h1>Stream</h1>
-                </div>
-                <div id="button">
-                    <button>Play Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="card-update"  data-tilt 
-     data-tilt-max="35" 
-     data-tilt-speed="800"
-     data-tilt-glare="true"
-     data-tilt-max-glare="0.4"
-     data-tilt-scale="0.9"
-     data-tilt-easing="cubic-bezier(.03,.98,.52,.99)">
-            <div class="card-video"></div>
-            <div class="card-img">
-                <div class="card-image"></div>
-                <h1>Heading</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero beatae minima temporibus alias suscipit quos, quis, ipsa maxime facilis quibusdam asperiores blanditiis inventore ipsam optio perferendis nam doloremque mollitia, excepturi eligendi aspernatur corrupti modi!</p>
-                <div class="tags">
-                    <h1>
-                        <span>
-                            <img src="" alt="" srcset="">
-                        </span>    
-                        PlayStation
-                    </h1>
-                    <h1>Xbox</h1>
-                    <h1>Stream</h1>
-                </div>
-                <div id="button">
-                    <button>Play Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="card-update"  data-tilt 
-     data-tilt-max="35" 
-     data-tilt-speed="800"
-     data-tilt-glare="true"
-     data-tilt-max-glare="0.4"
-     data-tilt-scale="0.9"
-     data-tilt-easing="cubic-bezier(.03,.98,.52,.99)">
-            <div class="card-video"></div>
-            <div class="card-img">
-                <div class="card-image"></div>
-                <h1>Heading</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero beatae minima temporibus alias suscipit quos, quis, ipsa maxime facilis quibusdam asperiores blanditiis inventore ipsam optio perferendis nam doloremque mollitia, excepturi eligendi aspernatur corrupti modi!</p>
-                <div class="tags">
-                    <h1>
-                        <span>
-                            <img src="" alt="" srcset="">
-                        </span>    
-                        PlayStation
-                    </h1>
-                    <h1>Xbox</h1>
-                    <h1>Stream</h1>
-                </div>
-                <div id="button">
-                    <button>Play Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="card-update"  data-tilt 
-     data-tilt-max="35" 
-     data-tilt-speed="800"
-     data-tilt-glare="true"
-     data-tilt-max-glare="0.4"
-     data-tilt-scale="0.9"
-     data-tilt-easing="cubic-bezier(.03,.98,.52,.99)">
-            <div class="card-video"></div>
-            <div class="card-img">
-                <div class="card-image"></div>
-                <h1>Heading</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero beatae minima temporibus alias suscipit quos, quis, ipsa maxime facilis quibusdam asperiores blanditiis inventore ipsam optio perferendis nam doloremque mollitia, excepturi eligendi aspernatur corrupti modi!</p>
-                <div class="tags">
-                    <h1>
-                        <span>
-                            <img src="" alt="" srcset="">
-                        </span>    
-                        PlayStation
-                    </h1>
-                    <h1>Xbox</h1>
-                    <h1>Stream</h1>
-                </div>
-                <div id="button">
-                    <button>Play Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="card-update"  data-tilt 
-     data-tilt-max="35" 
-     data-tilt-speed="800"
-     data-tilt-glare="true"
-     data-tilt-max-glare="0.4"
-     data-tilt-scale="0.9"
-     data-tilt-easing="cubic-bezier(.03,.98,.52,.99)">
-            <div class="card-video"></div>
-            <div class="card-img">
-                <div class="card-image"></div>
-                <h1>Heading</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero beatae minima temporibus alias suscipit quos, quis, ipsa maxime facilis quibusdam asperiores blanditiis inventore ipsam optio perferendis nam doloremque mollitia, excepturi eligendi aspernatur corrupti modi!</p>
-                <div class="tags">
-                    <h1>
-                        <span>
-                            <img src="" alt="" srcset="">
-                        </span>    
-                        PlayStation
-                    </h1>
-                    <h1>Xbox</h1>
-                    <h1>Stream</h1>
-                </div>
-                <div id="button">
-                    <button>Play Now</button>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-
-  `;
+  return ``
 }
 
 // Function for animation for update page.
-function getUpdatesAnimation(){  
 
-      const swiper = new Swiper(".hero-swiper", {
-    loop: true,
-    speed: 800, // smoother slide transition
-    observer: true,
-    observeParents: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev"
-    },
-    on: {
-      // ✅ Animate the first slide when Swiper is ready
-      init() {
-        animateSlideIn(this);
-      },
-      slideChangeTransitionStart() {
-        animateSlideOut(this);
-      },
-      slideChangeTransitionEnd() {
-        animateSlideIn(this);
-      }
-    }
-  });
 
-  // ✅ Auto-slide every 2 seconds
-  setInterval(() => {
-    swiper.slideNext();
-  }, 2000);
-
-  // ✅ Animate text in
-  function animateSlideIn(swiper) {
-    const activeSlide = swiper.slides[swiper.activeIndex];
-    if (!activeSlide || activeSlide.classList.contains("swiper-slide-duplicate")) return;
-
-    const heading = activeSlide.querySelector("h2");
-    const paragraph = activeSlide.querySelector("p");
-
-    if (!heading || !paragraph) return;
-
-    gsap.killTweensOf([heading, paragraph]);
-    gsap.set([heading, paragraph], {
-      clearProps: "all",
-      opacity: 0,
-      y: 30
-    });
-
-    gsap.to(heading, {
-      opacity: 1,
-      y: 0,
-      duration: 0.5,
-      ease: "power2.out"
-    });
-
-    gsap.to(paragraph, {
-      opacity: 1,
-      y: 0,
-      duration: 0.5,
-      ease: "power2.out",
-      delay: 0.1
-    });
-  }
-
-  // ✅ Animate text out
-  function animateSlideOut(swiper) {
-    const currentSlide = swiper.slides[swiper.previousIndex];
-    if (!currentSlide || currentSlide.classList.contains("swiper-slide-duplicate")) return;
-
-    const heading = currentSlide.querySelector("h2");
-    const paragraph = currentSlide.querySelector("p");
-
-    if (!heading || !paragraph) return;
-
-    gsap.killTweensOf([heading, paragraph]);
-    gsap.to([heading, paragraph], {
-      opacity: 0,
-      y: -30,
-      duration: 0.4,
-      ease: "power2.in"
-    });
-  }
+function getUpdatesAnimation(){ 
 }
-
-// ✅ Call the dump function when DOM is ready
-window.addEventListener("load", getUpdatesAnimation);
-VanillaTilt.init(document.querySelectorAll(".card-update"), {
-    max: 35,               // Stronger tilt (default is 15)
-    speed: 800,            // Slower movement for dramatic effect
-    glare: true,           // Enable glare effect
-    "max-glare": 0.4,      // Up to 40% glare
-    scale: 1.05,           // Slight zoom on hover
-    easing: "cubic-bezier(.03,.98,.52,.99)"  // Smooth easing
-  });
-  
