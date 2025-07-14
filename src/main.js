@@ -161,9 +161,6 @@ const pageTransition = async (tab) => {
 
     await new Promise((r) => setTimeout(r, 500));
     
-
-
-
   requestAnimationFrame(() => {
 
       getUpdatesAnimation();
@@ -1012,7 +1009,151 @@ function triggerPicAnimation() {
 
 // Codes for Update Page.
 function getUpdates() {
-  return ``
+  return `
+     
+  <div id="updates_page">
+    <div class="top_photo">
+         <div class="top_image"> <img src="" alt="top poster"></div>
+         <div class="top_text1">S04</div>
+         <div class="top_text2">CALL OF DUTY</div>
+         <div class="top_text3">BLACK OPS 6</div>
+         <div class="top_text4">PATCH NOTES</div>
+
+    </div>
+
+    <div class="top_para">
+        <div class="tp1">Black Ops 6 Season 04</div>
+        <div class="tp2">Patch Notes</div>
+        <div class="t_button">BO6</div>
+        <div class="12days">12 DAYS AGO</div>
+
+    </div>
+
+    <div class="news_title">NEWS</div>
+        
+    <div class="news_cards">
+            <div class="news_card1">
+                <div class="news_photo1"> <img src="" alt="nphoto"></div>
+                <div class="news_title1">Call of Duty: Warzone Season 04 Reloaded Patch Notes</div>
+                <div class="nbutton1">WZ</div>
+                <div class="ndays1">12 DAYS AGO</div>
+            </div>      
+
+            <div class="news_card2">
+                <div class="news_photo2"> <img src="" alt="no photo"></div>
+                <div class="news_title2"> Round Based Zombies — GobbleGums</div>
+                <div class="nbutton2">BO6</div>
+                <div class="ndays2">12 DAYS AGO</div>
+            </div>
+
+            <div class="news_card3">
+                <div class="news_photo3"> <img src="" alt="no photo"></div>
+                <div class="news_title3">Multiplayer Map Guide — Fringe</div>
+                <div class="nbutton3">BO6</div>
+                <div class="ndays3">12 DAYS AGO</div>
+            </div>
+
+            <div class="news_card4">
+                <div class="news_photo4"> <img src="" alt="no photo"></div>
+                <div class="news_title4"></div>
+                <div class="nbutton4">WZ</div>
+                <div class="ndays4">12 DAYS AGO</div>
+            </div>
+
+            <div class="news_card5">
+                <div class="news_photo5"> <img src="" alt="no photo"></div>
+                <div class="news_title5"></div>
+                <div class="nbutton5">WZ</div>
+                <div class="ndays5">12 DAYS AGO</div>
+            </div>
+
+            <div class="news_card6">
+                <div class="news_photo6"> <img src="" alt="no photo"></div>
+                <div class="news_title6"></div>
+                <div class="nbutton6">WZ</div>
+                <div class="ndays6">12 DAYS AGO</div>
+            </div>
+
+    </div>
+
+    <div class="more_news">GET MORE NEWS</div>
+
+    <div class="game_pass">
+        <div class="xbox_logo"><img src="" alt="no image"></div>
+        <div class="xbox_line1">Play Call of Duty: Black Ops 6 on console, PC and cloud with Xbox</div>
+        <div class="xbox_line2">Game Pass.</div>
+        <div class="xbox_button">Join Now</div>
+    </div>
+
+    <div class="game_title">GET THE GAME</div>
+
+    <div class="game_cards">
+        <div class="game_card1">
+            <div class="game_image1"></div>
+            <div class="small_font1">CALL OF DUTY</div>
+            <div class="big_font">BLACK OPS 6</div>
+            <div class="glogo1"> <img src="" alt="404 not found"></div> 
+            <div class="glogo2"> <img src="" alt="404 not found"></div>
+            <div class="glogo3"> <img src="" alt="404 not found"></div>
+                    <!-- check for glogo if it causes conflicts or not, if u use same class name -->
+        </div> 
+        <div class="game_card2">
+              <div class="game_image2"></div>
+            <div class="small_font2">CALL OF DUTY</div>
+            <div class="big_font3">MODERN WARFARE III</div>
+            <div class="glogo1"> <img src="" alt="404 not found"></div> 
+            <div class="glogo2"> <img src="" alt="404 not found"></div>
+            <div class="glogo3"> <img src="" alt="404 not found"></div>
+
+        </div>
+        <div class="game_card3">
+              <div class="game_image3"></div>
+            <div class="small_font3">CALL OF DUTY</div>
+            <div class="big_font3">Warzone</div>
+            <div class="glogo1"> <img src="" alt="404 not found"></div> 
+            <div class="glogo2"> <img src="" alt="404 not found"></div>
+            <div class="glogo3"> <img src="" alt="404 not found"></div>
+
+        </div>
+        <div class="game_card4">
+              <div class="game_image4"></div>
+            <div class="small_font4">CALL OF DUTY</div>
+            <div class="big_font4">MOBILE</div>
+            <div class="glogo1"> <img src="" alt="404 not found"></div> 
+            <div class="glogo2"> <img src="" alt="404 not found"></div>
+            <div class="glogo3"> <img src="" alt="404 not found"></div>
+
+        </div>
+        <div class="game_card5">
+              <div class="game_image5"></div>
+            <div class="small_font5">CALL OF DUTY</div>
+            <div class="big_font5">BLACK OPS 6</div>
+            <div class="glogo1"> <img src="" alt="404 not found"></div> 
+            <div class="glogo2"> <img src="" alt="404 not found"></div>
+            <div class="glogo3"> <img src="" alt="404 not found"></div>
+
+        </div>
+        <div class="game_card6">
+              <div class="game_image6"></div>
+            <div class="small_font6">CALL OF DUTY</div>
+            <div class="big_font6">BLACK OPS 6</div>
+            <div class="glogo1"> <img src="" alt="404 not found"></div> 
+            <div class="glogo2"> <img src="" alt="404 not found"></div>
+            <div class="glogo3"> <img src="" alt="404 not found"></div>
+
+        </div>
+    </div>
+
+    <div class="more_games">SEE MORE IN THE STORE</div>
+    
+    <div class="bottom_div"></div>
+   
+    <!-- CHECH HOMEPAGE CODE FOR MAKING THE BOTTOM DIV  -->
+    <div class=""></div>
+
+</div>
+
+  `
 }
 
 // Function for animation for update page.
