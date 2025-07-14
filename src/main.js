@@ -139,20 +139,24 @@ const pageTransition = async (tab) => {
       ScrollTrigger.refresh();
     });
 
-  } else{
+  }  else{
     // Trigger preload silently in the background
     preloadFrameImages(); // 🔥 Preload started if not done
 
     if (tab.textContent === "Franchises") {
+    disableScroll(); // Disable scroll during transition
     mainContent.innerHTML = getFranchises();
 
     await new Promise((r) => setTimeout(r, 500));
     await animateOutPages();
 
-    requestAnimationFrame(() => {
-      getFranchisesAnimation();
-      initializeFranchiseInteractions();
-      enableScroll(); // ✅ Scroll is safe after all GSAP/DOM are ready
+    // Wait for images to load before enabling animations
+    imagesLoaded("#franchisesPage", { background: true }, () => {
+      requestAnimationFrame(() => {
+        getFranchisesAnimation();
+        initializeFranchiseInteractions();
+        enableScroll(); // ✅ Scroll is safe after all GSAP/DOM are ready
+      });
     });
 
   } else if (tab.textContent === "Updates") {
@@ -527,12 +531,25 @@ function getFranchises() {
             <button class="btn-hero-secondary">Watch Trailer</button>
           </div>
         </div>
-        <div class="hero-scroll-indicator">
+                <!-- Backdrop Blur + Overlay -->
+                <div id="backdrop-overlay" class="hidden"></div>
+
+                <!-- Trailer Modal -->
+                <div id="trailer-container" class="hidden">
+                <iframe 
+                id="youtube-player" 
+                src="" 
+                frameborder="0" 
+                allowfullscreen 
+                allow="autoplay; encrypted-media">
+              </iframe>
+              <button id="close-trailer" class="close-btn">×</button>
+            </div>
+          <div class="hero-scroll-indicator">
           <div class="scroll-line"></div>
           <span>Scroll to explore</span>
         </div>
       </div>
-
       <!-- Interactive Stats Dashboard -->
       <div id="franchisesStats">
         <div class="stats-container">
@@ -564,7 +581,6 @@ function getFranchises() {
           </div>
         </div>
       </div>
-
       <!-- Filter Navigation -->
       <div id="franchiseFilters">
         <div class="filter-container">
@@ -574,7 +590,6 @@ function getFranchises() {
           <button class="filter-btn" data-filter="live">Live Service</button>
         </div>
       </div>
-
       <!-- Premium Franchise Cards Grid -->
       <div id="franchisesGrid">
         <div class="grid-container">
@@ -744,13 +759,32 @@ function getFranchisesAnimation() {
     duration: 0.8,
     ease: "power3.out"
   }, "-=0.3")
-  .from(".hero-cta button", {
-    y: 30,
-    opacity: 0,
-    duration: 0.6,
-    stagger: 0.1,
+
+  .fromTo(".hero-cta button",
+  {
+    y: 50,
+    scale: 0.9,
+    autoAlpha: 0
+  },
+  {
+    y: 0,
+    scale: 1,
+    autoAlpha: 1,
+    duration: 0.8,
+    stagger: 0.15,
     ease: "back.out(1.7)"
-  }, "-=0.2")
+  }, "-=0.2"
+)
+
+//   .from(".hero-cta button", {
+//   y: 50,
+//   scale: 0.9,
+//   autoAlpha: 0,
+//   duration: 0.8,
+//   stagger: 0.15,
+//   ease: "back.out(1.7)"
+// }, "-=0.2")
+
   .from(".hero-scroll-indicator", {
     y: 20,
     opacity: 0,
@@ -766,57 +800,122 @@ function getFranchisesAnimation() {
     ease: "none"
   });
 
-  // Stats animation with enhanced effects
-  gsap.from(".stat-item", {
-    y: 80,
-    opacity: 0,
-    duration: 1,
-    stagger: 0.15,
-    ease: "back.out(1.7)",
+
+
+
+
+ const watchTrailerBtn = document.querySelector('.btn-hero-secondary');
+  const trailerContainer = document.getElementById('trailer-container');
+  const backdropOverlay = document.getElementById('backdrop-overlay');
+  const closeTrailerBtn = document.getElementById('close-trailer');
+  const youtubePlayer = document.getElementById('youtube-player');
+
+  watchTrailerBtn.addEventListener('click', () => {
+    youtubePlayer.src = "https://www.youtube.com/embed/uUo5gnaYB_w?autoplay=1";
+    backdropOverlay.classList.remove('hidden');
+    trailerContainer.classList.remove('hidden');
+  });
+
+  closeTrailerBtn.addEventListener('click', () => {
+    youtubePlayer.src = ""; // Stop the video
+    backdropOverlay.classList.add('hidden');
+    trailerContainer.classList.add('hidden');
+  });
+
+// Stats animation with enhanced effects
+document.querySelectorAll('.stat-number').forEach((stat, index) => {
+const target = parseInt(stat.dataset.target);
+
+// Animate number using a standalone object
+  const counter = { val: 0 };
+    gsap.to(counter, {
+    val: target,
+    duration: 2,
+    delay: index * 0.2,
+    ease: "power2.out",
     scrollTrigger: {
-      trigger: "#franchisesStats",
+      trigger: stat,
       start: "top 80%",
-      end: "bottom 20%",
-      toggleActions: "play none none reverse"
+    },
+    onUpdate: () => {
+      stat.textContent = Math.floor(counter.val);
     }
   });
 
-  // Animate stat numbers with counter effect
-  document.querySelectorAll('.stat-number').forEach((stat, index) => {
-    const target = parseInt(stat.dataset.target);
-    
-    gsap.from(stat, {
-      textContent: 0,
-      duration: 2,
-      delay: index * 0.2,
-      ease: "power2.out",
-      snap: { textContent: 1 },
-      scrollTrigger: {
-        trigger: stat,
-        start: "top 80%",
-      },
-      onUpdate: function() {
-        stat.textContent = Math.floor(this.targets()[0].textContent);
+// Animate the progress bar
+  const progressBar = stat.parentElement.querySelector('.stat-progress');
+  if (progressBar) {
+    gsap.fromTo(progressBar, 
+      { scaleX: 0 }, 
+      {
+        scaleX: 1,
+        duration: 1.5,
+        delay: index * 0.2,
+        ease: "power2.out",
+        transformOrigin: "left",
+        scrollTrigger: {
+          trigger: stat,
+          start: "top 80%",
+        }
       }
-    });
+    );
+  }
+});
 
-    // Animate progress bars
-    gsap.from(stat.parentElement.querySelector('.stat-progress'), {
-      scaleX: 0,
-      duration: 1.5,
-      delay: index * 0.2,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: stat,
-        start: "top 80%",
-      }
-    });
-  });
+  // gsap.from(".stat-item", {
+  //   y: 80,
+  //   opacity: 0,
+  //   duration: 1,
+  //   stagger: 0.15,
+  //   ease: "back.out(1.7)",
+  //   scrollTrigger: {
+  //     trigger: "#franchisesStats",
+  //     start: "top 80%",
+  //     end: "bottom 20%",
+  //     toggleActions: "play none none reverse"
+  //   }
+  // });
+
+  // // Animate stat numbers with counter effect
+  // document.querySelectorAll('.stat-number').forEach((stat, index) => {
+  //   const target = parseInt(stat.dataset.target);
+    
+  //   gsap.from(stat, {
+  //     textContent: 0,
+  //     duration: 2,
+  //     delay: index * 0.2,
+  //     ease: "power2.out",
+  //     snap: { textContent: 1 },
+  //     scrollTrigger: {
+  //       trigger: stat,
+  //       start: "top 80%",
+  //     },
+  //     onUpdate: function() {
+  //       stat.textContent = Math.floor(this.targets()[0].textContent);
+  //     }
+  //   });
+
+  //   // Animate progress bars
+  //   const progressBar = stat.parentElement.querySelector('.stat-progress');
+  //   if (progressBar) {
+  //     gsap.from(progressBar, {
+  //       scaleX: 0,
+  //       duration: 1.5,
+  //       delay: index * 0.2,
+  //       ease: "power2.out",
+  //       scrollTrigger: {
+  //         trigger: stat,
+  //         start: "top 80%",
+  //       }
+  //     });
+  //   }
+  // });
+
 
   // Filter buttons animation
   gsap.from(".filter-btn", {
     y: 30,
-    opacity: 0,
+    opacity: 1,
     duration: 0.6,
     stagger: 0.1,
     ease: "back.out(1.7)",
@@ -824,12 +923,12 @@ function getFranchisesAnimation() {
       trigger: "#franchiseFilters",
       start: "top 90%",
     }
-  });
+   });
 
   // Franchise cards with advanced stagger animation
   gsap.from(".franchise-card", {
     y: 100,
-    opacity: 0,
+    opacity: 1,
     rotation: 5,
     duration: 1,
     stagger: {
@@ -920,7 +1019,7 @@ function initializeFranchiseInteractions() {
         
         if (shouldShow) {
           gsap.to(card, {
-            opacity: 1,
+             autoAlpha: 1,
             scale: 1,
             duration: 0.5,
             ease: "back.out(1.7)"
@@ -928,7 +1027,7 @@ function initializeFranchiseInteractions() {
           card.style.display = 'block';
         } else {
           gsap.to(card, {
-            opacity: 0,
+            autoAlpha: 0,
             scale: 0.8,
             duration: 0.3,
             ease: "power2.in",
@@ -943,11 +1042,15 @@ function initializeFranchiseInteractions() {
 
   // Card hover effects
   cards.forEach(card => {
+    const hoverEffect = card.querySelector('.card-hover-effect');
+    
     card.addEventListener('mouseenter', () => {
-      gsap.to(card.querySelector('.card-hover-effect'), {
-        opacity: 1,
-        duration: 0.3
-      });
+      if (hoverEffect) {
+        gsap.to(hoverEffect, {
+          opacity: 1,
+          duration: 0.3,
+        });
+      }
       gsap.to(card, {
         y: -10,
         duration: 0.3,
@@ -956,10 +1059,12 @@ function initializeFranchiseInteractions() {
     });
 
     card.addEventListener('mouseleave', () => {
-      gsap.to(card.querySelector('.card-hover-effect'), {
-        opacity: 0,
-        duration: 0.3
-      });
+      if (hoverEffect) {
+        gsap.to(hoverEffect, {
+          opacity: 0,
+          duration: 0.3
+        });
+      }
       gsap.to(card, {
         y: 0,
         duration: 0.3,
@@ -968,6 +1073,7 @@ function initializeFranchiseInteractions() {
     });
   });
 }
+
 
 function triggerPicAnimation() {
   gsap.to(".pic1", {
