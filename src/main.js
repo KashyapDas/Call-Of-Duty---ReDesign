@@ -1079,7 +1079,7 @@ function getUpdates() {
     <div class="more_news">GET MORE NEWS</div>
 
     <div class="game_pass">
-        <div class="xbox_logo"><img src="" alt="no image"></div>
+        <div class="xbox_logo"> <img src="" alt="no image"></div>
         <div class="xbox_line1">Play Call of Duty: Black Ops 6 on console, PC and cloud with Xbox</div>
         <div class="xbox_line2">Game Pass.</div>
         <div class="xbox_button">Join Now</div>
@@ -1089,7 +1089,7 @@ function getUpdates() {
 
     <div class="game_cards">
         <div class="game_card1">
-            <div class="game_image1"></div>
+            <div class="game_image1"><img src="" alt="404 not found"></div>
             <div class="small_font1">CALL OF DUTY</div>
             <div class="big_font">BLACK OPS 6</div>
             <div class="glogo1"> <img src="" alt="404 not found"></div> 
@@ -1098,7 +1098,7 @@ function getUpdates() {
                     <!-- check for glogo if it causes conflicts or not, if u use same class name -->
         </div> 
         <div class="game_card2">
-              <div class="game_image2"></div>
+            <div class="game_image2"><img src="" alt="404 not found"></div>
             <div class="small_font2">CALL OF DUTY</div>
             <div class="big_font3">MODERN WARFARE III</div>
             <div class="glogo1"> <img src="" alt="404 not found"></div> 
@@ -1107,7 +1107,7 @@ function getUpdates() {
 
         </div>
         <div class="game_card3">
-              <div class="game_image3"></div>
+            <div class="game_image3"><img src="" alt="404 not found"></div>
             <div class="small_font3">CALL OF DUTY</div>
             <div class="big_font3">Warzone</div>
             <div class="glogo1"> <img src="" alt="404 not found"></div> 
@@ -1116,7 +1116,7 @@ function getUpdates() {
 
         </div>
         <div class="game_card4">
-              <div class="game_image4"></div>
+            <div class="game_image4"><img src="" alt="404 not found"></div>
             <div class="small_font4">CALL OF DUTY</div>
             <div class="big_font4">MOBILE</div>
             <div class="glogo1"> <img src="" alt="404 not found"></div> 
@@ -1125,7 +1125,7 @@ function getUpdates() {
 
         </div>
         <div class="game_card5">
-              <div class="game_image5"></div>
+            <div class="game_image5"><img src="" alt="404 not found"></div>
             <div class="small_font5">CALL OF DUTY</div>
             <div class="big_font5">BLACK OPS 6</div>
             <div class="glogo1"> <img src="" alt="404 not found"></div> 
@@ -1134,7 +1134,7 @@ function getUpdates() {
 
         </div>
         <div class="game_card6">
-              <div class="game_image6"></div>
+            <div class="game_image6"><img src="" alt="404 not found"></div>
             <div class="small_font6">CALL OF DUTY</div>
             <div class="big_font6">BLACK OPS 6</div>
             <div class="glogo1"> <img src="" alt="404 not found"></div> 
