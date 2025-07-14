@@ -1104,3 +1104,10 @@ function triggerPicAnimation() {
     }
   });
 }
+
+function getUpdates(){
+  return `
+<div>Updates done</div>
+
+`
+}
