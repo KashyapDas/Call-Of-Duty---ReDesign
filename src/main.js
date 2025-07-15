@@ -1013,12 +1013,8 @@ function getUpdates() {
      
   <div id="updates_page">
     <div class="top_photo">
-         <div class="top_image"> <img src="" alt="top poster"></div>
-         <div class="top_text1">S04</div>
-         <div class="top_text2">CALL OF DUTY</div>
-         <div class="top_text3">BLACK OPS 6</div>
-         <div class="top_text4">PATCH NOTES</div>
-
+         <div class="top_image"> <img src="./images/Updates/BO6-S04-1.jpg" alt="top poster"></div>
+         
     </div>
 
     <div class="top_para">
@@ -1148,7 +1144,7 @@ function getUpdates() {
     
     <div class="bottom_div"></div>
    
-    <!-- CHECH HOMEPAGE CODE FOR MAKING THE BOTTOM DIV  -->
+    <!-- CHECK HOMEPAGE CODE FOR MAKING THE BOTTOM DIV  -->
     <div class=""></div>
 
 </div>

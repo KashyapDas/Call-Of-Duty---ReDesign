@@ -1424,3 +1424,177 @@ main{
 
 /* update page css starts here */
 
+
+/* ===== Base Styles ===== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+}
+
+/* ===== Updates Page Layout ===== */
+#updates_page {
+    width: 100%;
+}
+
+/* ===== Top Photo Section ===== */
+.top_photo {
+    position: relative;
+    width: 100%;
+}
+
+.top_image img {
+    width: 100%;
+    height: auto;
+}
+
+.top_text1,
+.top_text2,
+.top_text3,
+.top_text4 {
+    position: absolute;
+    color: white;
+    font-weight: bold;
+}
+
+/* Position each top text manually as per your design */
+.top_text1 {
+    top: 20px;
+    left: 20px;
+}
+
+.top_text2 {
+    top: 50px;
+    left: 20px;
+}
+
+.top_text3 {
+    top: 80px;
+    left: 20px;
+}
+
+.top_text4 {
+    top: 110px;
+    left: 20px;
+}
+
+/* ===== Top Paragraph Section ===== */
+.top_para {
+    padding: 20px;
+}
+
+.tp1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.tp2 {
+    font-size: 16px;
+}
+
+.t_button {
+    display: inline-block;
+    background: #444;
+    padding: 8px 12px;
+    margin-top: 10px;
+}
+
+.12days {
+    margin-top: 10px;
+}
+
+/* ===== News Title ===== */
+.news_title {
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* ===== News Cards Section ===== */
+.news_cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.news_cards > div {
+    background: #1a1a1a;
+    padding: 10px;
+    flex: 1 1 300px;
+}
+
+.news_cards img {
+    width: 100%;
+    height: auto;
+}
+
+/* ===== More News Button ===== */
+.more_news {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    cursor: pointer;
+}
+
+/* ===== Game Pass Section ===== */
+.game_pass {
+    background: #1a1a1a;
+    padding: 20px;
+    text-align: center;
+}
+
+.xbox_logo img {
+    max-width: 100px;
+}
+
+.xbox_button {
+    display: inline-block;
+    background: green;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+/* ===== Game Title ===== */
+.game_title {
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* ===== Game Cards Section ===== */
+.game_cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.game_cards > div {
+    background: #1a1a1a;
+    padding: 10px;
+    flex: 1 1 300px;
+    text-align: center;
+}
+
+.game_cards img {
+    width: 100%;
+    height: auto;
+}
+
+/* ===== More Games Button ===== */
+.more_games {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    cursor: pointer;
+}
+
+/* ===== Bottom Div Placeholder ===== */
+.bottom_div {
+    height: 100px;
+    background: #000;
+}
+
