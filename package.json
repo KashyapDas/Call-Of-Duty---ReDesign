@@ -12,6 +12,7 @@
     "vite": "^7.0.0"
   },
   "dependencies": {
+    "eslint": "^9.31.0",
     "imagesloaded": "^5.0.0"
   }
 }

@@ -1,0 +1,87 @@
+// Enhanced Franchise data with more details
+export const franchiseData = [
+  {
+    title: "Modern Warfare",
+    subtitle: "Tactical Combat Redefined",
+    description: "Experience the most realistic and intense warfare with cutting-edge graphics and immersive gameplay that pushes the boundaries of modern combat simulation.",
+    image: "./images/image1.jpg",
+    year: "2019",
+    status: "Active",
+    players: "50M+",
+    rating: "9.2",
+    category: "Tactical Shooter",
+    features: ["4K Graphics", "Cross-Platform", "Ray Tracing"],
+    playUrl: "https://store.steampowered.com/app/1938090/Call_of_Duty_Modern_Warfare_II/",
+    learnMoreUrl: "https://www.callofduty.com/playnow/mw2"
+  },
+  {
+    title: "Black Ops",
+    subtitle: "Covert Operations",
+    description: "Dive into the shadows of classified missions and uncover the truth behind global conspiracies in this thrilling espionage-focused franchise.",
+    image: "./images/image2.jpg",
+    year: "2020",
+    status: "Active",
+    players: "45M+",
+    rating: "9.0",
+    category: "Action Thriller",
+    features: ["Zombies Mode", "Campaign", "Multiplayer"],
+    playUrl: "https://store.steampowered.com/app/1938090/Call_of_Duty_Modern_Warfare_II/",
+    learnMoreUrl: "https://www.callofduty.com/playnow/mw2"
+  },
+  {
+    title: "Warzone",
+    subtitle: "Battle Royale Evolution",
+    description: "Drop into the ultimate battle royale experience with up to 150 players in massive combat zones featuring dynamic weather and destructible environments.",
+    image: "./images/image3.jpg",
+    year: "2020",
+    status: "Live",
+    players: "100M+",
+    rating: "8.8",
+    category: "Battle Royale",
+    features: ["150 Players", "Free-to-Play", "Cross-Platform"],
+    playUrl: "https://store.steampowered.com/app/1938090/Call_of_Duty_Modern_Warfare_II/",
+    learnMoreUrl: "https://www.callofduty.com/playnow/mw2"
+  },
+  {
+    title: "Vanguard",
+    subtitle: "WWII Reimagined",
+    description: "Fight across multiple fronts in the most ambitious WWII Call of Duty experience ever created, featuring authentic historical campaigns.",
+    image: "./images/image4.jpg",
+    year: "2021",
+    status: "Active",
+    players: "30M+",
+    rating: "8.5",
+    category: "Historical Warfare",
+    features: ["WWII Setting", "Destructible Environments", "Champion Hill"],
+    playUrl: "https://store.steampowered.com/app/1938090/Call_of_Duty_Modern_Warfare_II/",
+    learnMoreUrl: "https://www.callofduty.com/playnow/mw2"
+  },
+  {
+    title: "Mobile",
+    subtitle: "Warfare On-The-Go",
+    description: "Take the Call of Duty experience anywhere with console-quality gameplay optimized for mobile devices without compromising on quality.",
+    image: "./images/image5.jpg",
+    year: "2019",
+    status: "Live",
+    players: "650M+",
+    rating: "9.1",
+    category: "Mobile Gaming",
+    features: ["Mobile Optimized", "Touch Controls", "Battle Royale"],
+    playUrl: "https://store.steampowered.com/app/1938090/Call_of_Duty_Modern_Warfare_II/",
+    learnMoreUrl: "https://www.callofduty.com/playnow/mw2"
+  },
+  {
+    title: "Zombies",
+    subtitle: "Undead Survival",
+    description: "Survive waves of the undead in the most terrifying and challenging zombie experience with cooperative gameplay and mysterious storylines.",
+    image: "./images/image6.jpg",
+    year: "2008",
+    status: "Legacy",
+    players: "200M+",
+    rating: "9.3",
+    category: "Survival Horror",
+    features: ["Co-op Mode", "Easter Eggs", "Storyline"],
+    playUrl: "https://store.steampowered.com/app/1938090/Call_of_Duty_Modern_Warfare_II/",
+    learnMoreUrl: "https://www.callofduty.com/playnow/mw2"
+  }
+];

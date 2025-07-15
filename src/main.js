@@ -1,5 +1,6 @@
 // use imageLoaded lib to prevent the slow loading of the marque for the 1st the DOM content loaded
 import imagesLoaded from "imagesloaded";
+import { franchiseData } from './Data/franchiseData.js';
 // global varaible 
 let frameImages = [];
 let framesLoaded = false;
@@ -14,81 +15,7 @@ const links = document.querySelectorAll(".link");
 const mainContent = document.querySelector("#contentPage");
 const navIcon = document.querySelector("#clickNav");
 const mobileNav = document.querySelector("#mobileNav");
-// Enhanced Franchise data with more details
-const franchiseData = [
-  {
-    title: "Modern Warfare",
-    subtitle: "Tactical Combat Redefined",
-    description: "Experience the most realistic and intense warfare with cutting-edge graphics and immersive gameplay that pushes the boundaries of modern combat simulation.",
-    image: "./images/image1.jpg",
-    year: "2019",
-    status: "Active",
-    players: "50M+",
-    rating: "9.2",
-    category: "Tactical Shooter",
-    features: ["4K Graphics", "Cross-Platform", "Ray Tracing"]
-  },
-  {
-    title: "Black Ops",
-    subtitle: "Covert Operations",
-    description: "Dive into the shadows of classified missions and uncover the truth behind global conspiracies in this thrilling espionage-focused franchise.",
-    image: "./images/image2.jpg",
-    year: "2020",
-    status: "Active",
-    players: "45M+",
-    rating: "9.0",
-    category: "Action Thriller",
-    features: ["Zombies Mode", "Campaign", "Multiplayer"]
-  },
-  {
-    title: "Warzone",
-    subtitle: "Battle Royale Evolution",
-    description: "Drop into the ultimate battle royale experience with up to 150 players in massive combat zones featuring dynamic weather and destructible environments.",
-    image: "./images/image3.jpg",
-    year: "2020",
-    status: "Live",
-    players: "100M+",
-    rating: "8.8",
-    category: "Battle Royale",
-    features: ["150 Players", "Free-to-Play", "Cross-Platform"]
-  },
-  {
-    title: "Vanguard",
-    subtitle: "WWII Reimagined",
-    description: "Fight across multiple fronts in the most ambitious WWII Call of Duty experience ever created, featuring authentic historical campaigns.",
-    image: "./images/image4.jpg",
-    year: "2021",
-    status: "Active",
-    players: "30M+",
-    rating: "8.5",
-    category: "Historical Warfare",
-    features: ["WWII Setting", "Destructible Environments", "Champion Hill"]
-  },
-  {
-    title: "Mobile",
-    subtitle: "Warfare On-The-Go",
-    description: "Take the Call of Duty experience anywhere with console-quality gameplay optimized for mobile devices without compromising on quality.",
-    image: "./images/image5.jpg",
-    year: "2019",
-    status: "Live",
-    players: "650M+",
-    rating: "9.1",
-    category: "Mobile Gaming",
-    features: ["Mobile Optimized", "Touch Controls", "Battle Royale"]
-  },
-  {
-    title: "Zombies",
-    subtitle: "Undead Survival",
-    description: "Survive waves of the undead in the most terrifying and challenging zombie experience with cooperative gameplay and mysterious storylines.",
-    image: "./images/image6.jpg",
-    year: "2008",
-    status: "Legacy",
-    players: "200M+",
-    rating: "9.3",
-    category: "Survival Horror",
-    features: ["Co-op Mode", "Easter Eggs", "Storyline"]
-  }
-];
+
 // Scroll preventation effect in between the page transition
 function disableScroll() {
   document.body.style.overflow = "hidden";
@@ -155,6 +82,7 @@ const pageTransition = async (tab) => {
       requestAnimationFrame(() => {
         getFranchisesAnimation();
         initializeFranchiseInteractions();
+        ScrollTrigger.refresh(); // ✅ important
         enableScroll(); // ✅ Scroll is safe after all GSAP/DOM are ready
       });
     });
@@ -531,6 +459,11 @@ function getFranchises() {
             <button class="btn-hero-secondary">Watch Trailer</button>
           </div>
         </div>
+        
+        <! -- Explore all games button functionality -->
+
+       
+                <! -- Watch trailer button functionality -->
                 <!-- Backdrop Blur + Overlay -->
                 <div id="backdrop-overlay" class="hidden"></div>
 
@@ -636,20 +569,23 @@ function getFranchises() {
                   </div>
                 </div>
                 
+                
+
+
                 <div class="card-actions">
-                  <button class="btn-card-primary">Play Now</button>
-                  <button class="btn-card-secondary">Learn More</button>
-                  <button class="btn-card-icon">
-                    <span class="icon">❤️</span>
-                  </button>
-                </div>
+                <button class="btn-card-primary" data-play="${franchise.playUrl}">Play Now</button>
+                <button class="btn-card-secondary" data-learn="${franchise.learnMoreUrl}">Learn More</button>
+                <button class="btn-card-icon">
+                <span class="icon">❤️</span>
+                </button>
               </div>
+            </div>
               
               <div class="card-hover-effect"></div>
             </div>
           `).join('')}
         </div>
-      </div>
+</div>
 
       <!-- Featured Showcase -->
       <div id="featuredShowcase">
@@ -727,9 +663,7 @@ function getFranchises() {
           `).join('')}
         </div>
       </div>
-
-
-    </div>
+</div>
   `;
 }
 // animatio fnc of the franchies page
@@ -800,17 +734,19 @@ function getFranchisesAnimation() {
     ease: "none"
   });
 
-
-
-
-
- const watchTrailerBtn = document.querySelector('.btn-hero-secondary');
+  const exploreAllGamesBtn = document.querySelector('.btn-hero-primary');
+  const watchTrailerBtn = document.querySelector('.btn-hero-secondary');
   const trailerContainer = document.getElementById('trailer-container');
   const backdropOverlay = document.getElementById('backdrop-overlay');
   const closeTrailerBtn = document.getElementById('close-trailer');
   const youtubePlayer = document.getElementById('youtube-player');
 
-  watchTrailerBtn.addEventListener('click', () => {
+  exploreAllGamesBtn.addEventListener('click', () => {
+    document.getElementById("franchisesGrid").scrollIntoView({
+      behavior: "smooth"
+    });
+  });
+    watchTrailerBtn.addEventListener('click', () => {
     youtubePlayer.src = "https://www.youtube.com/embed/uUo5gnaYB_w?autoplay=1";
     backdropOverlay.classList.remove('hidden');
     trailerContainer.classList.remove('hidden');
@@ -999,32 +935,286 @@ const target = parseInt(stat.dataset.target);
     ease: "power2.inOut"
   });
 }
+
+document.addEventListener("click", function (e) {
+  if (e.target.matches(".btn-card-primary")) {
+    const playUrl = e.target.getAttribute("data-play");
+    if (playUrl) window.open(playUrl, "_blank");
+  }
+
+  if (e.target.matches(".btn-card-secondary")) {
+    const learnUrl = e.target.getAttribute("data-learn");
+    if (learnUrl) window.open(learnUrl, "_blank");
+  }
+});
+
+
+
+
 // ad-on fnc of the animation page
-function initializeFranchiseInteractions() {
+// function initializeFranchiseInteractions() {
   // Filter functionality
+//   const filterBtns = document.querySelectorAll('.filter-btn');
+//   const cards = document.querySelectorAll('.franchise-card');
+
+//   filterBtns.forEach(btn => {
+//     btn.addEventListener('click', () => {
+//       const filter = btn.dataset.filter;
+      
+//       // Update active button
+//       filterBtns.forEach(b => b.classList.remove('active'));
+//       btn.classList.add('active');
+      
+//       // Filter cards with animation
+//       cards.forEach(card => {
+//         const shouldShow = filter === 'all' || card.dataset.status === filter;
+        
+//         if (shouldShow) {
+//           gsap.to(card, {
+//              autoAlpha: 1,
+//             scale: 1,
+//             duration: 0.5,
+//             ease: "back.out(1.7)",
+//             onStart: () => gsap.set(card, { display: 'block' })
+//           });
+//           // card.style.display = 'block';
+          
+
+//         } else {
+//           gsap.to(card, {
+//             autoAlpha: 0,
+//             scale: 0.8,
+//             duration: 0.3,
+//             ease: "power2.in",
+//             onComplete: () => gsap.set(card, { display: 'none' })
+//               // card.style.display = 'none';
+//         });
+//         }
+//       });
+//     });
+//   });
+
+//   // Card hover effects
+//   cards.forEach(card => {
+//     const hoverEffect = card.querySelector('.card-hover-effect');
+    
+//     card.addEventListener('mouseenter', () => {
+//       if (hoverEffect) {
+//         gsap.to(hoverEffect, {
+//           opacity: 1,
+//           duration: 0.3,
+//         });
+//       }
+//       gsap.to(card, {
+//         y: -10,
+//         duration: 0.3,
+//         ease: "power2.out"
+//       });
+//     });
+
+//     card.addEventListener('mouseleave', () => {
+//       if (hoverEffect) {
+//         gsap.to(hoverEffect, {
+//           opacity: 0,
+//           duration: 0.3
+//         });
+//       }
+//       gsap.to(card, {
+//         y: 0,
+//         duration: 0.3,
+//         ease: "power2.out"
+//       });
+//     });
+//   });
+// }
+// function initializeFranchiseInteractions() {
+//   const filterBtns = document.querySelectorAll('.filter-btn');
+//   const cards = document.querySelectorAll('.franchise-card');
+
+//   const hoverSound = new Audio('hover.mp3'); // replace with correct path
+
+//   // FILTER LOGIC
+//   filterBtns.forEach(btn => {
+//     btn.addEventListener('click', () => {
+//       const filter = btn.dataset.filter;
+
+//       filterBtns.forEach(b => b.classList.remove('active'));
+//       btn.classList.add('active');
+
+//       cards.forEach(card => {
+//         const shouldShow = filter === 'all' || card.dataset.status === filter;
+
+//         if (shouldShow) {
+//           card.style.display = 'block';
+//           gsap.fromTo(card, {
+//             autoAlpha: 0,
+//             scale: 0.8
+//           }, {
+//             autoAlpha: 1,
+//             scale: 1,
+//             duration: 0.4,
+//             ease: "back.out(1.7)"
+//           });
+//         } else {
+//           gsap.to(card, {
+//             autoAlpha: 0,
+//             scale: 0.8,
+//             duration: 0.3,
+//             ease: "power2.in",
+//             onComplete: () => {
+//               card.style.display = 'none';
+//             }
+//           });
+//         }
+//       });
+//     });
+//   });
+
+
+
+// // Detect if the device supports hover
+// // const canHover = window.matchMedia('(hover: hover)').matches;
+
+// cards.forEach(card => {
+//   const hoverEffect = card.querySelector('.card-hover-effect');
+//   const image = card.querySelector('.card-bg-image');
+//   const title = card.querySelector('.card-title');
+//   const subtitle = card.querySelector('.card-subtitle');
+//   const description = card.querySelector('.card-description');
+//   const features = card.querySelectorAll('.feature-tag');
+//   const revealElements = [title, subtitle, description, ...features];
+
+//   // Desktop hover effects
+//   card.addEventListener('mousemove', (e) => {
+//     const rect = card.getBoundingClientRect();
+//     const x = e.clientX - rect.left;
+//     const y = e.clientY - rect.top;
+//     const centerX = rect.width / 2;
+//     const centerY = rect.height / 2;
+//     const rotateY = (x - centerX) / 10;
+//     const rotateX = -(y - centerY) / 10;
+//     gsap.to(card, {
+//       rotationY: rotateY,
+//       rotationX: rotateX,
+//       transformPerspective: 600,
+//       transformOrigin: "center",
+//       duration: 0.3
+//     });
+//   });
+
+//   card.addEventListener('mouseenter', () => {
+//     hoverSound.currentTime = 0;
+//     hoverSound.play();
+
+//     gsap.to(card, { y: -10, duration: 0.3, ease: "power2.out" });
+//     card.classList.add('glow-border');
+
+//     if (hoverEffect) {
+//       gsap.to(hoverEffect, { opacity: 1, duration: 0.3 });
+//     }
+
+//     if (image) {
+//       gsap.to(image, { scale: 1.08, duration: 0.3 });
+//     }
+
+//     gsap.fromTo(revealElements, {
+//       y: 20,
+//       opacity: 0
+//     }, {
+//       y: 0,
+//       opacity: 1,
+//       duration: 0.5,
+//       stagger: 0.05,
+//       ease: "power2.out"
+//     });
+//   });
+
+//   card.addEventListener('mouseleave', () => {
+//     gsap.to(card, {
+//       y: 0,
+//       rotationX: 0,
+//       rotationY: 0,
+//       duration: 0.3,
+//       ease: "power2.out"
+//     });
+
+//     card.classList.remove('glow-border');
+
+//     if (hoverEffect) {
+//       gsap.to(hoverEffect, { opacity: 0, duration: 0.3 });
+//     }
+
+//     if (image) {
+//       gsap.to(image, { scale: 1, duration: 0.3 });
+//     }
+//   });
+
+//   // Mobile scroll-based animation using IntersectionObserver
+//   const observer = new IntersectionObserver((entries) => {
+//     entries.forEach(entry => {
+//       if (entry.isIntersecting && window.innerWidth < 1024)
+//  {
+//         hoverSound.currentTime = 0;
+//         hoverSound.play();
+
+//         gsap.to(card, { y: -10, duration: 0.3, ease: "power2.out" });
+//         card.classList.add('glow-border');
+//         if (hoverEffect) gsap.to(hoverEffect, { opacity: 1, duration: 0.3 });
+//         if (image) gsap.to(image, { scale: 1.08, duration: 0.3 });
+
+//         gsap.fromTo(revealElements, {
+//           y: 20,
+//           opacity: 0
+//         }, {
+//           y: 0,
+//           opacity: 1,
+//           duration: 0.5,
+//           stagger: 0.05,
+//           ease: "power2.out"
+//         });
+//       } else if (window.innerWidth < 1024)
+//  {
+//         gsap.to(card, { y: 0, duration: 0.3, ease: "power2.out" });
+//         card.classList.remove('glow-border');
+//         if (hoverEffect) gsap.to(hoverEffect, { opacity: 0, duration: 0.3 });
+//         if (image) gsap.to(image, { scale: 1, duration: 0.3 });
+//       }
+//     });
+//   }, { threshold: 0.3 });
+
+//   observer.observe(card);
+// });
+
+
+// }
+
+function initializeFranchiseInteractions() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('.franchise-card');
+  const hoverSound = new Audio('hover.mp3'); // Make sure the path is correct
 
+  // FILTERING LOGIC
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const filter = btn.dataset.filter;
-      
-      // Update active button
+
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      
-      // Filter cards with animation
+
       cards.forEach(card => {
         const shouldShow = filter === 'all' || card.dataset.status === filter;
-        
+
         if (shouldShow) {
-          gsap.to(card, {
-             autoAlpha: 1,
+          card.style.display = 'block';
+          gsap.fromTo(card, {
+            autoAlpha: 0,
+            scale: 0.8
+          }, {
+            autoAlpha: 1,
             scale: 1,
-            duration: 0.5,
+            duration: 0.4,
             ease: "back.out(1.7)"
           });
-          card.style.display = 'block';
         } else {
           gsap.to(card, {
             autoAlpha: 0,
@@ -1040,41 +1230,108 @@ function initializeFranchiseInteractions() {
     });
   });
 
-  // Card hover effects
+  // Detect if the device supports hover (like desktop) or not (like mobile/tablet)
+  const isTouchDevice = window.matchMedia('(hover: none)').matches;
+
   cards.forEach(card => {
     const hoverEffect = card.querySelector('.card-hover-effect');
-    
-    card.addEventListener('mouseenter', () => {
-      if (hoverEffect) {
-        gsap.to(hoverEffect, {
-          opacity: 1,
-          duration: 0.3,
-        });
-      }
-      gsap.to(card, {
-        y: -10,
-        duration: 0.3,
-        ease: "power2.out"
-      });
-    });
+    const image = card.querySelector('.card-bg-image');
+    const title = card.querySelector('.card-title');
+    const subtitle = card.querySelector('.card-subtitle');
+    const description = card.querySelector('.card-description');
+    const features = card.querySelectorAll('.feature-tag');
+    const revealElements = [title, subtitle, description, ...features];
 
-    card.addEventListener('mouseleave', () => {
-      if (hoverEffect) {
-        gsap.to(hoverEffect, {
-          opacity: 0,
+    // DESKTOP: Hover interactions
+    if (!isTouchDevice) {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateY = (x - centerX) / 10;
+        const rotateX = -(y - centerY) / 10;
+        gsap.to(card, {
+          rotationY: rotateY,
+          rotationX: rotateX,
+          transformPerspective: 600,
+          transformOrigin: "center",
           duration: 0.3
         });
-      }
-      gsap.to(card, {
-        y: 0,
-        duration: 0.3,
-        ease: "power2.out"
       });
-    });
+
+      card.addEventListener('mouseenter', () => {
+        hoverSound.currentTime = 0;
+        hoverSound.play();
+
+        gsap.to(card, { y: -10, duration: 0.3, ease: "power2.out" });
+        card.classList.add('glow-border');
+        if (hoverEffect) gsap.to(hoverEffect, { opacity: 1, duration: 0.3 });
+        if (image) gsap.to(image, { scale: 1.08, duration: 0.3 });
+
+        gsap.fromTo(revealElements, {
+          y: 20,
+          opacity: 0
+        }, {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          stagger: 0.05,
+          ease: "power2.out"
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+          y: 0,
+          rotationX: 0,
+          rotationY: 0,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+
+        card.classList.remove('glow-border');
+        if (hoverEffect) gsap.to(hoverEffect, { opacity: 0, duration: 0.3 });
+        if (image) gsap.to(image, { scale: 1, duration: 0.3 });
+      });
+    }
+// MOBILE/TABLET: Scroll-based animation using IntersectionObserver
+    if (isTouchDevice) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            hoverSound.currentTime = 0;
+            hoverSound.play();
+
+            gsap.to(card, { y: -10, duration: 0.3, ease: "power2.out" });
+            card.classList.add('glow-border');
+            if (hoverEffect) gsap.to(hoverEffect, { opacity: 1, duration: 0.3 });
+            if (image) gsap.to(image, { scale: 1.08, duration: 0.3 });
+
+            gsap.fromTo(revealElements, {
+              y: 20,
+              opacity: 0
+            }, {
+              y: 0,
+              opacity: 1,
+              duration: 0.5,
+              stagger: 0.05,
+              ease: "power2.out"
+            });
+          } else {
+            gsap.to(card, { y: 0, duration: 0.3, ease: "power2.out" });
+            card.classList.remove('glow-border');
+            if (hoverEffect) gsap.to(hoverEffect, { opacity: 0, duration: 0.3 });
+            if (image) gsap.to(image, { scale: 1, duration: 0.3 });
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(card);
+    }
   });
 }
-
-
 function triggerPicAnimation() {
   gsap.to(".pic1", {
     opacity: 1,
@@ -1105,9 +1362,3 @@ function triggerPicAnimation() {
   });
 }
 
-function getUpdates(){
-  return `
-<div>Updates done</div>
-
-`
-}
