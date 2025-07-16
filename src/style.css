@@ -1424,10 +1424,6 @@ main{
 
 /* update page css starts here */
 
-
-/* ========== UPDATES PAGE STRUCTURE CSS ========== */
-
-
 #updates_page {
     width: 100vw;
     background: #0a0a0a;
@@ -1694,9 +1690,4 @@ main{
     text-align: center;
     font-size: 2vw;
     margin: 3vh 0;
-}
-
-/* Bottom Div Placeholder */
-.bottom_div {
-    height: 5vh;
 }

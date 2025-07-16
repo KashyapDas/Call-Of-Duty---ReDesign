@@ -1130,12 +1130,57 @@ function getUpdates() {
 
     <div class="more_games">SEE MORE IN THE STORE</div>
     
-    <div class="bottom_div"></div>
-   
-    <!-- CHECK HOMEPAGE CODE FOR MAKING THE BOTTOM DIV  -->
-    <div class=""></div>
+  
+<footer id="homeFooter">
+        <div id="homeText">
+            <h1>Legal</h1>
+            <h1>Terms of use</h1>
+            <h1>Privacy policy</h1>
+            <h1>Carrers</h1>
+            <h1>Cookie Policy</h1>
+            <h1>Support</h1>
+            <h1>Code of Contact</h1>
+            <h1>Your privacy choises</h1>
+        </div>
+        <!-- <div id="hr"></div> -->
+      </footer>
+    </div>
+    <div id="footerLogos"> 
+        <div id="imgDiv">
+            <img src="./logos/activision-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/atvi-shanghai-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/digital-legends-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/high-moon-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/raven-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/infinity-ward-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/solid-state-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/treyarch-logo.png" />
+        </div>
+    </div>
+    <div id="licence">
+        <div id="licenceImage">
+            <img src="./logos/esrb-privacy.jpg" />
+           <img src="./logos/cod-hub-esrb-en.png" />
+        </div>
+        <p id="footerText">
+            <span>© 2024-2025 Activision Publishing, Inc. ACTIVISION, CALL OF DUTY, CALL OF DUTY LEAGUE, MODERN WARFARE, CALL OF DUTY BLACK OPS, CALL OF DUTY WARZONE, and CALL OF DUTY VANGUARD are trademarks of Activision Publishing, Inc. All other trademarks and trade names are the property of their respective owners.</span>
+        </p>
+    </div>
 
-</div>
 
   `
 }
