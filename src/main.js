@@ -1007,6 +1007,9 @@ function triggerPicAnimation() {
   });
 }
 
+
+
+
 // Codes for Update Page.
 function getUpdates() {
   return `
@@ -1021,7 +1024,7 @@ function getUpdates() {
         <div class="tp1">Black Ops 6 Season 04</div>
         <div class="tp2">Patch Notes</div>
         <div class="t_button">BO6</div>
-        <div class="12days">12 DAYS AGO</div>
+        <div class="days">12 DAYS AGO</div>
 
     </div>
 
@@ -1029,44 +1032,44 @@ function getUpdates() {
         
     <div class="news_cards">
             <div class="news_card1">
-                <div class="news_photo1"> <img src="" alt="nphoto"></div>
+                <div class="news_photo1"> <img src="./images/Updates/WZ-PATCHNOTES.jpg" alt="nphoto"></div>
                 <div class="news_title1">Call of Duty: Warzone Season 04 Reloaded Patch Notes</div>
                 <div class="nbutton1">WZ</div>
                 <div class="ndays1">12 DAYS AGO</div>
             </div>      
 
             <div class="news_card2">
-                <div class="news_photo2"> <img src="" alt="no photo"></div>
+                <div class="news_photo2"> <img src="./images/Updates/ZM-GG.jpg" alt="no photo"></div>
                 <div class="news_title2"> Round Based Zombies — GobbleGums</div>
                 <div class="nbutton2">BO6</div>
                 <div class="ndays2">12 DAYS AGO</div>
             </div>
 
             <div class="news_card3">
-                <div class="news_photo3"> <img src="" alt="no photo"></div>
+                <div class="news_photo3"> <img src="./images/Updates/MAPS-FRINGE.jpg" alt="no photo"></div>
                 <div class="news_title3">Multiplayer Map Guide — Fringe</div>
                 <div class="nbutton3">BO6</div>
                 <div class="ndays3">12 DAYS AGO</div>
             </div>
 
             <div class="news_card4">
-                <div class="news_photo4"> <img src="" alt="no photo"></div>
-                <div class="news_title4"></div>
-                <div class="nbutton4">WZ</div>
+                <div class="news_photo4"> <img src="./images/Updates/MAPS-ECLIPSE.jpg" alt="no photo"></div>
+                <div class="news_title4">Multiplayer Map Guide — Eclipse</div>
+                <div class="nbutton4">BO6</div>
                 <div class="ndays4">12 DAYS AGO</div>
             </div>
 
             <div class="news_card5">
-                <div class="news_photo5"> <img src="" alt="no photo"></div>
-                <div class="news_title5"></div>
-                <div class="nbutton5">WZ</div>
+                <div class="news_photo5"> <img src="./images/Updates/CODM-RAJ.jpg" alt="no photo"></div>
+                <div class="news_title5">Call of Duty: Mobile x Ronald Acuña Jr.</div>
+                <div class="nbutton5">CODM</div>
                 <div class="ndays5">12 DAYS AGO</div>
             </div>
 
             <div class="news_card6">
-                <div class="news_photo6"> <img src="" alt="no photo"></div>
-                <div class="news_title6"></div>
-                <div class="nbutton6">WZ</div>
+                <div class="news_photo6"> <img src="./images/Updates/CODM-S6-ANNOUNCE.jpg" alt="no photo"></div>
+                <div class="news_title6">Introducing Call of Duty: Mobile Season 6 — Gundams Arrive</div>
+                <div class="nbutton6">CODM</div>
                 <div class="ndays6">12 DAYS AGO</div>
             </div>
 
@@ -1085,59 +1088,42 @@ function getUpdates() {
 
     <div class="game_cards">
         <div class="game_card1">
-            <div class="game_image1"><img src="" alt="404 not found"></div>
+            <div class="game_image1"><img src="./images/Updates/bo6-1.jpg" alt="404 not found"></div>
             <div class="small_font1">CALL OF DUTY</div>
             <div class="big_font">BLACK OPS 6</div>
-            <div class="glogo1"> <img src="" alt="404 not found"></div> 
-            <div class="glogo2"> <img src="" alt="404 not found"></div>
-            <div class="glogo3"> <img src="" alt="404 not found"></div>
+            <div class="glogo1"> <img src="./logos/Xbox-logo.png" alt="404 not found"></div> 
+            <div class="glogo2"> <img src="./logos/Playstation-Logo.png" alt="404 not found"></div>
+            <div class="glogo3"> <img src="./logos/Steam-Logo.png" alt="404 not found"></div>
                     <!-- check for glogo if it causes conflicts or not, if u use same class name -->
         </div> 
         <div class="game_card2">
-            <div class="game_image2"><img src="" alt="404 not found"></div>
+            <div class="game_image2"><img src="./images/Updates/mw3-4.png" alt="404 not found"></div>
             <div class="small_font2">CALL OF DUTY</div>
             <div class="big_font3">MODERN WARFARE III</div>
-            <div class="glogo1"> <img src="" alt="404 not found"></div> 
-            <div class="glogo2"> <img src="" alt="404 not found"></div>
-            <div class="glogo3"> <img src="" alt="404 not found"></div>
+            <div class="glogo1"> <img src="./logos/Xbox-logo.png" alt="404 not found"></div> 
+            <div class="glogo2"> <img src="./logos/Playstation-Logo.png" alt="404 not found"></div>
+            <div class="glogo3"> <img src="./logos/Steam-Logo.png" alt="404 not found"></div>
 
         </div>
         <div class="game_card3">
-            <div class="game_image3"><img src="" alt="404 not found"></div>
+            <div class="game_image3"><img src="./images/Updates/cod-warzone.jpg" alt="404 not found"></div>
             <div class="small_font3">CALL OF DUTY</div>
             <div class="big_font3">Warzone</div>
-            <div class="glogo1"> <img src="" alt="404 not found"></div> 
-            <div class="glogo2"> <img src="" alt="404 not found"></div>
-            <div class="glogo3"> <img src="" alt="404 not found"></div>
+            <div class="glogo1"> <img src="./logos/Xbox-logo.png" alt="404 not found"></div> 
+            <div class="glogo2"> <img src="./logos/Playstation-Logo.png" alt="404 not found"></div>
+            <div class="glogo3"> <img src="./logos/Steam-Logo.png" alt="404 not found"></div>
 
         </div>
         <div class="game_card4">
-            <div class="game_image4"><img src="" alt="404 not found"></div>
+            <div class="game_image4"><img src="./images/Updates/CODM2.jpg" alt="404 not found"></div>
             <div class="small_font4">CALL OF DUTY</div>
             <div class="big_font4">MOBILE</div>
-            <div class="glogo1"> <img src="" alt="404 not found"></div> 
-            <div class="glogo2"> <img src="" alt="404 not found"></div>
-            <div class="glogo3"> <img src="" alt="404 not found"></div>
+            <div class="glogo1"> <img src="./logos/Xbox-logo.png" alt="404 not found"></div> 
+            <div class="glogo2"> <img src="./logos/Playstation-Logo.png" alt="404 not found"></div>
+            <div class="glogo3"> <img src="./logos/Steam-Logo.png" alt="404 not found"></div>
 
         </div>
-        <div class="game_card5">
-            <div class="game_image5"><img src="" alt="404 not found"></div>
-            <div class="small_font5">CALL OF DUTY</div>
-            <div class="big_font5">BLACK OPS 6</div>
-            <div class="glogo1"> <img src="" alt="404 not found"></div> 
-            <div class="glogo2"> <img src="" alt="404 not found"></div>
-            <div class="glogo3"> <img src="" alt="404 not found"></div>
-
-        </div>
-        <div class="game_card6">
-            <div class="game_image6"><img src="" alt="404 not found"></div>
-            <div class="small_font6">CALL OF DUTY</div>
-            <div class="big_font6">BLACK OPS 6</div>
-            <div class="glogo1"> <img src="" alt="404 not found"></div> 
-            <div class="glogo2"> <img src="" alt="404 not found"></div>
-            <div class="glogo3"> <img src="" alt="404 not found"></div>
-
-        </div>
+         
     </div>
 
     <div class="more_games">SEE MORE IN THE STORE</div>
