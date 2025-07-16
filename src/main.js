@@ -1021,8 +1021,7 @@ function getUpdates() {
     </div>
 
     <div class="top_para">
-        <div class="tp1">Black Ops 6 Season 04</div>
-        <div class="tp2">Patch Notes</div>
+        <div class="tp">Black Ops 6 Season 04<br/>Patch Notes</div>
         <div class="t_button">BO6</div>
         <div class="days">12 DAYS AGO</div>
 
@@ -1068,7 +1067,7 @@ function getUpdates() {
 
             <div class="news_card6">
                 <div class="news_photo6"> <img src="./images/Updates/CODM-S6-ANNOUNCE.jpg" alt="no photo"></div>
-                <div class="news_title6">Introducing Call of Duty: Mobile Season 6 — Gundams Arrive</div>
+                <div class="news_title6">Introducing CODM: S6 — Gundams Arrive</div>
                 <div class="nbutton6">CODM</div>
                 <div class="ndays6">12 DAYS AGO</div>
             </div>
@@ -1078,49 +1077,52 @@ function getUpdates() {
     <div class="more_news">GET MORE NEWS</div>
 
     <div class="game_pass">
-        <div class="xbox_logo"> <img src="" alt="no image"></div>
-        <div class="xbox_line1">Play Call of Duty: Black Ops 6 on console, PC and cloud with Xbox</div>
-        <div class="xbox_line2">Game Pass.</div>
-        <div class="xbox_button">Join Now</div>
+        <div class="xbox_logo">
+         <img src="./logos/Xbox-logo.png" alt="no image"> 
+        <h1> xbox <br/> <span>game</span> pass</h1>
+         </div>
+        <div class="xbox_line">Play Call of Duty: Black Ops 6 on console, PC and cloud with Xbox Game Pass.</div>
+      
+        <div class="xbox_button"><h1>Join Now</h1></div>
     </div>
 
     <div class="game_title">GET THE GAME</div>
 
-    <div class="game_cards">
-        <div class="game_card1">
-            <div class="game_image1"><img src="./images/Updates/bo6-1.jpg" alt="404 not found"></div>
-            <div class="small_font1">CALL OF DUTY</div>
+      <div class="game_cards">
+         <div class="game_card1">
+             <div class="game_image"><img src="./images/Updates/bo6-1.jpg" alt="404 not found"></div>
+            <div class="small_font">CALL OF DUTY</div>
             <div class="big_font">BLACK OPS 6</div>
-            <div class="glogo1"> <img src="./logos/Xbox-logo.png" alt="404 not found"></div> 
-            <div class="glogo2"> <img src="./logos/Playstation-Logo.png" alt="404 not found"></div>
-            <div class="glogo3"> <img src="./logos/Steam-Logo.png" alt="404 not found"></div>
+            <div class="glogo"> <img src="./logos/Xbox-logo.png" alt="404 not found"></div> 
+            <div class="glogo"> <img src="./logos/Playstation-Logo.png" alt="404 not found"></div>
+            <div class="glogo"> <img src="./logos/Steam-Logo.png" alt="404 not found"></div>
                     <!-- check for glogo if it causes conflicts or not, if u use same class name -->
         </div> 
         <div class="game_card2">
-            <div class="game_image2"><img src="./images/Updates/mw3-4.png" alt="404 not found"></div>
-            <div class="small_font2">CALL OF DUTY</div>
-            <div class="big_font3">MODERN WARFARE III</div>
-            <div class="glogo1"> <img src="./logos/Xbox-logo.png" alt="404 not found"></div> 
-            <div class="glogo2"> <img src="./logos/Playstation-Logo.png" alt="404 not found"></div>
-            <div class="glogo3"> <img src="./logos/Steam-Logo.png" alt="404 not found"></div>
+            <div class="game_image"><img src="./images/Updates/mw3-4.png" alt="404 not found"></div>
+            <div class="small_font">CALL OF DUTY</div>
+            <div class="big_font">MODERN WARFARE III</div>
+            <div class="glogo"> <img src="./logos/Xbox-logo.png" alt="404 not found"></div> 
+            <div class="glogo"> <img src="./logos/Playstation-Logo.png" alt="404 not found"></div>
+            <div class="glogo"> <img src="./logos/Steam-Logo.png" alt="404 not found"></div>
 
-        </div>
-        <div class="game_card3">
-            <div class="game_image3"><img src="./images/Updates/cod-warzone.jpg" alt="404 not found"></div>
-            <div class="small_font3">CALL OF DUTY</div>
-            <div class="big_font3">Warzone</div>
-            <div class="glogo1"> <img src="./logos/Xbox-logo.png" alt="404 not found"></div> 
-            <div class="glogo2"> <img src="./logos/Playstation-Logo.png" alt="404 not found"></div>
-            <div class="glogo3"> <img src="./logos/Steam-Logo.png" alt="404 not found"></div>
+       </div>
+            <div class="game_card3">
+            <div class="game_image"><img src="./images/Updates/cod-warzone.jpg" alt="404 not found"></div>
+            <div class="small_font">CALL OF DUTY</div>
+            <div class="big_font">Warzone</div>
+            <div class="glogo"> <img src="./logos/Xbox-logo.png" alt="404 not found"></div> 
+            <div class="glogo"> <img src="./logos/Playstation-Logo.png" alt="404 not found"></div>
+            <div class="glogo"> <img src="./logos/Steam-Logo.png" alt="404 not found"></div>
 
-        </div>
-        <div class="game_card4">
-            <div class="game_image4"><img src="./images/Updates/CODM2.jpg" alt="404 not found"></div>
-            <div class="small_font4">CALL OF DUTY</div>
-            <div class="big_font4">MOBILE</div>
-            <div class="glogo1"> <img src="./logos/Xbox-logo.png" alt="404 not found"></div> 
-            <div class="glogo2"> <img src="./logos/Playstation-Logo.png" alt="404 not found"></div>
-            <div class="glogo3"> <img src="./logos/Steam-Logo.png" alt="404 not found"></div>
+       </div>
+            <div class="game_card4">
+            <div class="game_image"><img src="./images/Updates/CODM2.jpg" alt="404 not found"></div>
+            <div class="small_font">CALL OF DUTY</div>
+            <div class="big_font">MOBILE</div>
+            <div class="glogo"> <img src="./logos/Xbox-logo.png" alt="404 not found"></div> 
+            <div class="glogo"> <img src="./logos/Playstation-Logo.png" alt="404 not found"></div>
+            <div class="glogo"> <img src="./logos/Steam-Logo.png" alt="404 not found"></div>
 
         </div>
          

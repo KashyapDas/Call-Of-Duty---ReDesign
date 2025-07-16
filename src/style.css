@@ -1425,178 +1425,278 @@ main{
 /* update page css starts here */
 
 
+/* ========== UPDATES PAGE STRUCTURE CSS ========== */
+
+
 #updates_page {
     width: 100vw;
-     font-family: Arial, sans-serif;
     background: #0a0a0a;
-     color: #fff;
-}
-
-/* Top Photo Section */
-.top_photo {
-    padding: 4vh 4vw;
-    position: relative;
-    width: 80vw;
+    color: #ffffff;
+    font-family: Clash;
+    font-weight: 500;
+    
 
 }
 
 .top_image img {
-    width: 100vw;
-    height: auto;
+    width: 100%;
+    height: 20%; 
+    object-fit: cover;
 }
 
-/* Top Paragraph Section */
+/* Top Para Layout */
 .top_para {
-    padding: 2vw;
+    width: 90vw;
+    margin: 2vh auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.tp1 {
-    font-size: 2vw;
-    font-weight: bold;
+.tp {
+    font-size: 3vw;
+    width: 100vw;
 }
 
-.tp2 {
-    font-size: 1.5vw;
-}
 
 .t_button {
-    display: inline-block;
-    background: #444;
-    padding: 0.8vh 1.2vw;
-    margin-top: 1vh;
+    width: 4vw;
+    padding: 1vh;
+    background: gray;
+    color: #000;
+    text-align: center;
 }
 
 .days {
-    margin-top: 1vh;
-    font-size: 1vw;
+    font-size: 1.5vw;
+    
 }
 
-/*  News Title */
+/* News Title */
 .news_title {
-    padding: 2vw;
-    font-size: 2.5vw;
-    font-weight: bold;
+    font-size: 4vw;
+    text-align: center;
+    margin: 3vh 0 2vh 0;
+    font-style: italic;
+    font-weight: 500;
+    text-decoration: underline;
+                    
 }
 
-/* News Cards Section */
+/* News Cards Grid */
 .news_cards {
-    display: flex;
-    flex-wrap: wrap;
+    width: 90vw;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(28vw, 1fr));
     gap: 2vw;
-    padding: 2vw;
+    font-family: NunitoSans;
+    font-weight: 200;
+    
 }
 
-.news_cards > div {
-    background: #1a1a1a;
-    padding: 1vw;
-    flex: 1 1 30vw;
+.news_card1,
+.news_card2,
+.news_card3,
+.news_card4,
+.news_card5,
+.news_card6 {
+    background: #111;
+    border-radius: 10px;
+    font-weight: 400;
 }
 
-.news_cards img {
+.news_photo1 img,
+.news_photo2 img,
+.news_photo3 img,
+.news_photo4 img,
+.news_photo5 img,
+.news_photo6 img {
     width: 100%;
-    height: auto;
+    height: 35vh;
+    object-fit: contain;
+    
 }
 
-/* More News Button */
+.news_title1,
+.news_title2,
+.news_title3,
+.news_title4,
+.news_title5,
+.news_title6 {
+    font-size: 2vw;
+    padding: 1vh;
+
+}
+
+.nbutton1,
+.nbutton2,
+.nbutton3,
+.nbutton4,
+.nbutton5,
+.nbutton6 {
+    width: 5vw;
+    padding: 1vh;
+    background: gray;
+    color: #000;
+    text-align: center;
+    margin: 1vh;
+    font-weight: 600;
+}
+
+.ndays1,
+.ndays2,
+.ndays3,
+.ndays4,
+.ndays5,
+.ndays6 {
+    font-size: 1.2vw;
+    padding: 1vh;
+}
+
+/* More News */
 .more_news {
     text-align: center;
-    padding: 2vh;
-    background: #333;
-    cursor: pointer;
-    font-size: 1.5vw;
+    font-size: 2vw;
+    margin: 3vh 0;
 }
 
-/*  Game Pass Section */
+/* Game Pass Flex Layout */
 .game_pass {
-    background: #1a1a1a;
-    padding: 2vw;
-    text-align: center;
+    width: 100%;
+    height: fit-content;
+    margin: auto;
+    padding: 2vh 1vh;
+}
+
+.xbox_logo{
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
 }
 
 .xbox_logo img {
-    max-width: 10vw;
+    mix-blend-mode: difference;
+    width: 3.5vw;
+    height: 3.5vw;
+}
+.xbox_logo h1{
+    font-family: Clash;
+    text-transform: uppercase;
+    font-size: 2.3vw;
+    color: white;
+    
+    line-height: 27px;
 }
 
-.xbox_line1,
-.xbox_line2 {
-    font-size: 1.5vw;
+.xbox_line {
+    font-size: 1.3vw;
+    width: 100%;
+    
+    text-align: center;
+    flex: 1;
+    margin: 0 2vw;
 }
 
-.xbox_button {
-    display: inline-block;
-    background: green;
-    padding: 1vh 2vw;
-    margin-top: 1vh;
-    font-size: 1.5vw;
+.xbox_button{
+    width: 100%;
+    text-align: center;
+    margin-top: 1.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+
+.xbox_button h1{
+    width: 12vw;
+    padding: 1vh;
+    background: greenyellow;
+    color: #000;
+    text-align: center;
+    font-size: 1.2vw;
+    border-radius: 6px;
+
+}
+.xbox_logo span{
+    color: #FB5607;
 }
 
 /* Game Title */
 .game_title {
-    padding: 2vw;
-    font-size: 2.5vw;
-    font-weight: bold;
+    font-size: 4vw;
+    text-align: center;
+    margin: 3vh 0;
+    
 }
 
-/* Game Cards Section */
-
-
-.game_cards img {
-    width: 100%;
-    height: auto;
-}
-
-/* More Games Button */
+/* Game Cards Grid */
 .game_cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2vw;
-    padding: 2vw;
-}
-
-.game_cards > div {
-    background:  #1a1a1a;
-    border-radius: 1vw;
-    overflow: hidden;
-    box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.1);
-}
-
-/* Images inside cards */
-.game_cards img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/*  logos in cards */
-.glogo1, .glogo2, .glogo3{
-    flex-direction: column;
-    
-    padding: 1vh;
-     display: inline-block;
-    width: 4vw;
-    
+    width: 95vw;
+    margin: auto;
     display: flex;
-    margin-top: 3vh;
-} 
+    grid-template-columns: repeat(auto-fit, minmax(22vw, 1fr));
+    gap: 2vw;
+    
+}
 
-/* Optional inner content styling */
-.game_cards > div div {
-    padding: 1vw;
+.game_card1,
+.game_card2,
+.game_card3,
+.game_card4 {
+    background: #111;
+    width: 30vw;
+    height: 66vh;
+    border-radius: 2.5% 2.5% 2.5% 2.5%;
+     padding: 1%;
 }
 
 
-/* ===== More Games Button ===== */
+
+.game_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.small_font {
+    font-size: 1.5vw;
+    padding: 1vh;
+    font-weight: 550;
+    font-size: 110%;
+}
+
+.big_font {
+    font-size: 2vw;
+    padding: 1vh;
+    font-size: 140%;
+    font-weight: 600;
+}
+
+/* Glogo Flex Row */
+.glogo {
+    display: inline-block;
+    margin: 0.5vh;
+    mix-blend-mode: difference;
+}
+
+.glogo img {
+    width: 1.5vw;
+    height: 1.5vw;
+    object-fit: contain;
+}
+
+/* More Games */
 .more_games {
     text-align: center;
-    padding: 2vh;
-    background: #333;
-    cursor: pointer;
-    font-size: 1.5vw;
+    font-size: 2vw;
+    margin: 3vh 0;
 }
 
-
-/* ===== Bottom Div Placeholder ===== */
+/* Bottom Div Placeholder */
 .bottom_div {
-    height: 10vh;
-    background: #000;
+    height: 5vh;
 }
