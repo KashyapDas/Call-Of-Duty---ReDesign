@@ -51,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ScrollTrigger.refresh(); // force correct trigger positions
     });
   });
+
 });
 // page transition with the dynamic content pushing based on the navbar links
 const pageTransition = async (tab) => {
@@ -88,12 +89,19 @@ const pageTransition = async (tab) => {
     });
 
   } else if (tab.textContent === "Updates") {
-    mainContent.innerHTML = `<div>Updates</div>`;
+    mainContent.innerHTML = getUpdates();
 
     await new Promise((r) => setTimeout(r, 500));
-    await animateOutPages();
+    
+  requestAnimationFrame(() => {
+
+      getUpdatesAnimation();
+     
     enableScroll();
-  } else if (tab.textContent === "Soldiers") {
+  });
+  await animateOutPages();
+  }
+  else if (tab.textContent === "Soldiers") {
     mainContent.innerHTML = `<div id="hero"><h1>Soldiers</h1></div>`;
 
     await new Promise((r) => setTimeout(r, 500));
@@ -1362,3 +1370,186 @@ function triggerPicAnimation() {
   });
 }
 
+
+
+
+// Codes for Update Page.
+function getUpdates() {
+  return `
+     
+  <div id="updates_page">
+    <div class="top_photo">
+         <div class="top_image"> <img src="./images/Updates/BO6-S04-1.jpg" alt="top poster"></div>
+         
+    </div>
+
+    <div class="top_para">
+        <div class="tp">Black Ops 6 Season 04<br/>Patch Notes</div>
+        <div class="t_button">BO6</div>
+        <div class="days">12 DAYS AGO</div>
+
+    </div>
+
+    <div class="news_title">NEWS</div>
+        
+    <div class="news_cards">
+            <div class="news_card1">
+                <div class="news_photo1"> <img src="./images/Updates/WZ-PATCHNOTES.jpg" alt="nphoto"></div>
+                <div class="news_title1">Call of Duty: Warzone Season 04 Reloaded Patch Notes</div>
+                <div class="nbutton1">WZ</div>
+                <div class="ndays1">12 DAYS AGO</div>
+            </div>      
+
+            <div class="news_card2">
+                <div class="news_photo2"> <img src="./images/Updates/ZM-GG.jpg" alt="no photo"></div>
+                <div class="news_title2"> Round Based Zombies — GobbleGums</div>
+                <div class="nbutton2">BO6</div>
+                <div class="ndays2">12 DAYS AGO</div>
+            </div>
+
+            <div class="news_card3">
+                <div class="news_photo3"> <img src="./images/Updates/MAPS-FRINGE.jpg" alt="no photo"></div>
+                <div class="news_title3">Multiplayer Map Guide — Fringe</div>
+                <div class="nbutton3">BO6</div>
+                <div class="ndays3">12 DAYS AGO</div>
+            </div>
+
+            <div class="news_card4">
+                <div class="news_photo4"> <img src="./images/Updates/MAPS-ECLIPSE.jpg" alt="no photo"></div>
+                <div class="news_title4">Multiplayer Map Guide — Eclipse</div>
+                <div class="nbutton4">BO6</div>
+                <div class="ndays4">12 DAYS AGO</div>
+            </div>
+
+            <div class="news_card5">
+                <div class="news_photo5"> <img src="./images/Updates/CODM-RAJ.jpg" alt="no photo"></div>
+                <div class="news_title5">Call of Duty: Mobile x Ronald Acuña Jr.</div>
+                <div class="nbutton5">CODM</div>
+                <div class="ndays5">12 DAYS AGO</div>
+            </div>
+
+            <div class="news_card6">
+                <div class="news_photo6"> <img src="./images/Updates/CODM-S6-ANNOUNCE.jpg" alt="no photo"></div>
+                <div class="news_title6">Introducing CODM: S6 — Gundams Arrive</div>
+                <div class="nbutton6">CODM</div>
+                <div class="ndays6">12 DAYS AGO</div>
+            </div>
+
+    </div>
+
+    <div class="more_news">GET MORE NEWS</div>
+
+    <div class="game_pass">
+        <div class="xbox_logo">
+         <img src="./logos/Xbox-logo.png" alt="no image"> 
+        <h1> xbox <br/> <span>game</span> pass</h1>
+         </div>
+        <div class="xbox_line">Play Call of Duty: Black Ops 6 on console, PC and cloud with Xbox Game Pass.</div>
+      
+        <div class="xbox_button"><h1>Join Now</h1></div>
+    </div>
+
+    <div class="game_title">GET THE GAME</div>
+
+      <div class="game_cards">
+         <div class="game_card1">
+             <div class="game_image"><img src="./images/Updates/bo6-1.jpg" alt="404 not found"></div>
+            <div class="small_font">CALL OF DUTY</div>
+            <div class="big_font">BLACK OPS 6</div>
+            <div class="glogo"> <img src="./logos/Xbox-logo.png" alt="404 not found"></div> 
+            <div class="glogo"> <img src="./logos/Playstation-Logo.png" alt="404 not found"></div>
+            <div class="glogo"> <img src="./logos/Steam-Logo.png" alt="404 not found"></div>
+                    <!-- check for glogo if it causes conflicts or not, if u use same class name -->
+        </div> 
+        <div class="game_card2">
+            <div class="game_image"><img src="./images/Updates/mw3-4.png" alt="404 not found"></div>
+            <div class="small_font">CALL OF DUTY</div>
+            <div class="big_font">MODERN WARFARE III</div>
+            <div class="glogo"> <img src="./logos/Xbox-logo.png" alt="404 not found"></div> 
+            <div class="glogo"> <img src="./logos/Playstation-Logo.png" alt="404 not found"></div>
+            <div class="glogo"> <img src="./logos/Steam-Logo.png" alt="404 not found"></div>
+
+       </div>
+            <div class="game_card3">
+            <div class="game_image"><img src="./images/Updates/cod-warzone.jpg" alt="404 not found"></div>
+            <div class="small_font">CALL OF DUTY</div>
+            <div class="big_font">Warzone</div>
+            <div class="glogo"> <img src="./logos/Xbox-logo.png" alt="404 not found"></div> 
+            <div class="glogo"> <img src="./logos/Playstation-Logo.png" alt="404 not found"></div>
+            <div class="glogo"> <img src="./logos/Steam-Logo.png" alt="404 not found"></div>
+
+       </div>
+            <div class="game_card4">
+            <div class="game_image"><img src="./images/Updates/CODM2.jpg" alt="404 not found"></div>
+            <div class="small_font">CALL OF DUTY</div>
+            <div class="big_font">MOBILE</div>
+            <div class="glogo"> <img src="./logos/Xbox-logo.png" alt="404 not found"></div> 
+            <div class="glogo"> <img src="./logos/Playstation-Logo.png" alt="404 not found"></div>
+            <div class="glogo"> <img src="./logos/Steam-Logo.png" alt="404 not found"></div>
+
+        </div>
+         
+    </div>
+
+    <div class="more_games">SEE MORE IN THE STORE</div>
+    
+  
+<footer id="homeFooter">
+        <div id="homeText">
+            <h1>Legal</h1>
+            <h1>Terms of use</h1>
+            <h1>Privacy policy</h1>
+            <h1>Carrers</h1>
+            <h1>Cookie Policy</h1>
+            <h1>Support</h1>
+            <h1>Code of Contact</h1>
+            <h1>Your privacy choises</h1>
+        </div>
+        <!-- <div id="hr"></div> -->
+      </footer>
+    </div>
+    <div id="footerLogos"> 
+        <div id="imgDiv">
+            <img src="./logos/activision-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/atvi-shanghai-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/digital-legends-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/high-moon-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/raven-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/infinity-ward-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/solid-state-logo.png" />
+        </div>
+        <div id="imgDiv">
+            <img src="./logos/treyarch-logo.png" />
+        </div>
+    </div>
+    <div id="licence">
+        <div id="licenceImage">
+            <img src="./logos/esrb-privacy.jpg" />
+           <img src="./logos/cod-hub-esrb-en.png" />
+        </div>
+        <p id="footerText">
+            <span>© 2024-2025 Activision Publishing, Inc. ACTIVISION, CALL OF DUTY, CALL OF DUTY LEAGUE, MODERN WARFARE, CALL OF DUTY BLACK OPS, CALL OF DUTY WARZONE, and CALL OF DUTY VANGUARD are trademarks of Activision Publishing, Inc. All other trademarks and trade names are the property of their respective owners.</span>
+        </p>
+    </div>
+
+
+  `
+}
+
+// Function for animation for update page.
+
+
+function getUpdatesAnimation(){ 
+}

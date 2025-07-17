@@ -30,13 +30,15 @@
 }
 
 html,body{
+    scroll-behavior: smooth;
+    
     height: 100%;
     width: 100%;
     overflow: hidden;
     position: relative;
     background-color: #0b090a;
 }
-
+  
 body::-webkit-scrollbar{
     display: none;
 }
@@ -1495,69 +1497,273 @@ main{
     50% { transform: translateY(-20px) rotate(180deg); }
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .showcase-container {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
+
+/* update page css starts here */
+
+#updates_page {
+    width: 100vw;
+    background: #0a0a0a;
+    color: #ffffff;
+    font-family: Clash;
+    font-weight: 500;
     
-    .grid-container {
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    }
-    
-    .timeline-item {
-        flex-direction: column !important;
-    }
-    
-    .timeline-content {
-        width: 100%;
-        margin-top: 2rem;
-    }
-    
-    .timeline-line {
-        left: 20px;
-    }
-    
-    .timeline-marker {
-        left: 20px;
-    }
+
 }
 
-@media (max-width: 768px) {
-    .stats-container {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-    
-    .grid-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .hero-cta {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .btn-hero-primary, .btn-hero-secondary {
-        width: 100%;
-        max-width: 300px;
-    }
+.top_image img {
+    width: 100%;
+    height: 20%; 
+    object-fit: cover;
 }
 
-@media (max-width: 480px) {
-    .card-content {
-        padding: 1.5rem;
-    }
+/* Top Para Layout */
+.top_para {
+    width: 90vw;
+    margin: 2vh auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tp {
+    font-size: 3vw;
+    width: 100vw;
+}
+
+
+.t_button {
+    width: 4vw;
+    padding: 1vh;
+    background: gray;
+    color: #000;
+    text-align: center;
+}
+
+.days {
+    font-size: 1.5vw;
     
-    .card-stats {
-        grid-template-columns: 1fr;
-    }
+}
+
+/* News Title */
+.news_title {
+    font-size: 4vw;
+    text-align: center;
+    margin: 3vh 0 2vh 0;
+    font-style: italic;
+    font-weight: 500;
+    text-decoration: underline;
+                    
+}
+
+/* News Cards Grid */
+.news_cards {
+    width: 90vw;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(28vw, 1fr));
+    gap: 2vw;
+    font-family: NunitoSans;
+    font-weight: 200;
     
-    .card-actions {
-        flex-direction: column;
-    }
+}
+
+.news_card1,
+.news_card2,
+.news_card3,
+.news_card4,
+.news_card5,
+.news_card6 {
+    background: #111;
+    border-radius: 10px;
+    font-weight: 400;
+}
+
+.news_photo1 img,
+.news_photo2 img,
+.news_photo3 img,
+.news_photo4 img,
+.news_photo5 img,
+.news_photo6 img {
+    width: 100%;
+    height: 35vh;
+    object-fit: contain;
     
-    .btn-card-primary, .btn-card-secondary {
-        width: 100%;
-    }
-} 
+}
+
+.news_title1,
+.news_title2,
+.news_title3,
+.news_title4,
+.news_title5,
+.news_title6 {
+    font-size: 2vw;
+    padding: 1vh;
+
+}
+
+.nbutton1,
+.nbutton2,
+.nbutton3,
+.nbutton4,
+.nbutton5,
+.nbutton6 {
+    width: 5vw;
+    padding: 1vh;
+    background: gray;
+    color: #000;
+    text-align: center;
+    margin: 1vh;
+    font-weight: 600;
+}
+
+.ndays1,
+.ndays2,
+.ndays3,
+.ndays4,
+.ndays5,
+.ndays6 {
+    font-size: 1.2vw;
+    padding: 1vh;
+}
+
+/* More News */
+.more_news {
+    text-align: center;
+    font-size: 2vw;
+    margin: 3vh 0;
+}
+
+/* Game Pass Flex Layout */
+.game_pass {
+    width: 100%;
+    height: fit-content;
+    margin: auto;
+    padding: 2vh 1vh;
+}
+
+.xbox_logo{
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+}
+
+.xbox_logo img {
+    mix-blend-mode: difference;
+    width: 3.5vw;
+    height: 3.5vw;
+}
+.xbox_logo h1{
+    font-family: Clash;
+    text-transform: uppercase;
+    font-size: 2.3vw;
+    color: white;
+    
+    line-height: 27px;
+}
+
+.xbox_line {
+    font-size: 1.3vw;
+    width: 100%;
+    
+    text-align: center;
+    flex: 1;
+    margin: 0 2vw;
+}
+
+.xbox_button{
+    width: 100%;
+    text-align: center;
+    margin-top: 1.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+
+.xbox_button h1{
+    width: 12vw;
+    padding: 1vh;
+    background: greenyellow;
+    color: #000;
+    text-align: center;
+    font-size: 1.2vw;
+    border-radius: 6px;
+
+}
+.xbox_logo span{
+    color: #FB5607;
+}
+
+/* Game Title */
+.game_title {
+    font-size: 4vw;
+    text-align: center;
+    margin: 3vh 0;
+    
+}
+
+/* Game Cards Grid */
+.game_cards {
+    width: 95vw;
+    margin: auto;
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(22vw, 1fr));
+    gap: 2vw;
+    
+}
+
+.game_card1,
+.game_card2,
+.game_card3,
+.game_card4 {
+    background: #111;
+    width: 30vw;
+    height: 66vh;
+    border-radius: 2.5% 2.5% 2.5% 2.5%;
+     padding: 1%;
+}
+
+
+
+.game_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.small_font {
+    font-size: 1.5vw;
+    padding: 1vh;
+    font-weight: 550;
+    font-size: 110%;
+}
+
+.big_font {
+    font-size: 2vw;
+    padding: 1vh;
+    font-size: 140%;
+    font-weight: 600;
+}
+
+/* Glogo Flex Row */
+.glogo {
+    display: inline-block;
+    margin: 0.5vh;
+    mix-blend-mode: difference;
+}
+
+.glogo img {
+    width: 1.5vw;
+    height: 1.5vw;
+    object-fit: contain;
+}
+
+/* More Games */
+.more_games {
+    text-align: center;
+    font-size: 2vw;
+    margin: 3vh 0;
+}
