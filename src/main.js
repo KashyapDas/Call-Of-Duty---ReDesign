@@ -89,19 +89,24 @@ const pageTransition = async (tab) => {
     });
 
   } else if (tab.textContent === "Updates") {
+    disableScroll(); // Disable scroll during transition
     mainContent.innerHTML = getUpdates();
 
     await new Promise((r) => setTimeout(r, 500));
+    await animateOutPages();
     
-  requestAnimationFrame(() => {
+  // Wait for images to load before enabling animations
 
+  imagesLoaded("#updates_page", { background: true }, () => {
+    requestAnimationFrame(() => {
       getUpdatesAnimation();
-     
-    enableScroll();
+      initializeUpdatesInteractions();
+      ScrollTrigger.refresh(); // ✅ important
+      enableScroll(); // ✅ Scroll is safe after all GSAP/DOM are ready
+    });
   });
-  await animateOutPages();
-  }
-  else if (tab.textContent === "Soldiers") {
+
+}else if (tab.textContent === "Soldiers") {
     mainContent.innerHTML = `<div id="hero"><h1>Soldiers</h1></div>`;
 
     await new Promise((r) => setTimeout(r, 500));
@@ -674,7 +679,7 @@ function getFranchises() {
 </div>
   `;
 }
-// animatio fnc of the franchies page
+//animation fnc of the franchies page
 function getFranchisesAnimation() {
   // Clear any existing ScrollTriggers
   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -1370,13 +1375,10 @@ function triggerPicAnimation() {
   });
 }
 
-
-
-
 // Codes for Update Page.
 function getUpdates() {
   return `
-     
+  
   <div id="updates_page">
     <div class="top_photo">
          <div class="top_image"> <img src="./images/Updates/BO6-S04-1.jpg" alt="top poster"></div>
@@ -1390,54 +1392,88 @@ function getUpdates() {
 
     </div>
 
-    <div class="news_title">NEWS</div>
-        
-    <div class="news_cards">
-            <div class="news_card1">
-                <div class="news_photo1"> <img src="./images/Updates/WZ-PATCHNOTES.jpg" alt="nphoto"></div>
-                <div class="news_title1">Call of Duty: Warzone Season 04 Reloaded Patch Notes</div>
-                <div class="nbutton1">WZ</div>
-                <div class="ndays1">12 DAYS AGO</div>
-            </div>      
+    <div class="main_news_title">NEWS</div>
 
-            <div class="news_card2">
-                <div class="news_photo2"> <img src="./images/Updates/ZM-GG.jpg" alt="no photo"></div>
-                <div class="news_title2"> Round Based Zombies — GobbleGums</div>
-                <div class="nbutton2">BO6</div>
-                <div class="ndays2">12 DAYS AGO</div>
-            </div>
-
-            <div class="news_card3">
-                <div class="news_photo3"> <img src="./images/Updates/MAPS-FRINGE.jpg" alt="no photo"></div>
-                <div class="news_title3">Multiplayer Map Guide — Fringe</div>
-                <div class="nbutton3">BO6</div>
-                <div class="ndays3">12 DAYS AGO</div>
-            </div>
-
-            <div class="news_card4">
-                <div class="news_photo4"> <img src="./images/Updates/MAPS-ECLIPSE.jpg" alt="no photo"></div>
-                <div class="news_title4">Multiplayer Map Guide — Eclipse</div>
-                <div class="nbutton4">BO6</div>
-                <div class="ndays4">12 DAYS AGO</div>
-            </div>
-
-            <div class="news_card5">
-                <div class="news_photo5"> <img src="./images/Updates/CODM-RAJ.jpg" alt="no photo"></div>
-                <div class="news_title5">Call of Duty: Mobile x Ronald Acuña Jr.</div>
-                <div class="nbutton5">CODM</div>
-                <div class="ndays5">12 DAYS AGO</div>
-            </div>
-
-            <div class="news_card6">
-                <div class="news_photo6"> <img src="./images/Updates/CODM-S6-ANNOUNCE.jpg" alt="no photo"></div>
-                <div class="news_title6">Introducing CODM: S6 — Gundams Arrive</div>
-                <div class="nbutton6">CODM</div>
-                <div class="ndays6">12 DAYS AGO</div>
-            </div>
-
+         
+     <div class="news-cards">
+  <div class="news-card">
+    <div class="card-image-container">
+      <img src="./images/Updates/WZ-PATCHNOTES.jpg" alt="nphoto" class="card-image" />
+      <div class="card-overlay"></div>
     </div>
+    <div class="card-content">
+      <div class="news_title">Call of Duty: Warzone Season 04 Reloaded Patch Notes</div>
+      <div class="category-btn">WZ</div>
+      <div class="ndays">12 DAYS AGO</div>
+    </div>
+  </div>
 
-    <div class="more_news">GET MORE NEWS</div>
+  <div class="news-card">
+    <div class="card-image-container">
+      <img src="./images/Updates/ZM-GG.jpg" alt="nphoto" class="card-image" />
+      <div class="card-overlay"></div>
+    </div>
+    <div class="card-content">
+      <div class="news_title">Round Based Zombies — GobbleGums</div>
+      <div class="category-btn">BO6</div>
+      <div class="ndays">12 DAYS AGO</div>
+    </div>
+  </div>
+
+  <div class="news-card">
+    <div class="card-image-container">
+      <img src="./images/Updates/MAPS-FRINGE.jpg" alt="nphoto" class="card-image" />
+      <div class="card-overlay"></div>
+    </div>
+    <div class="card-content">
+      <div class="news_title">Multiplayer Map Guide — Fringe</div>
+      <div class="category-btn">BO6</div>
+      <div class="ndays">12 DAYS AGO</div>
+    </div>
+  </div>
+
+  <div class="news-card">
+    <div class="card-image-container">
+      <img src="./images/Updates/MAPS-ECLIPSE.jpg" alt="nphoto" class="card-image" />
+      <div class="card-overlay"></div>
+    </div>
+    <div class="card-content">
+      <div class="news_title">Multiplayer Map Guide — Eclipse</div>
+      <div class="category-btn">BO6</div>
+      <div class="ndays">12 DAYS AGO</div>
+    </div>
+  </div>
+
+  <div class="news-card">
+    <div class="card-image-container">
+      <img src="./images/Updates/CODM-RAJ.jpg" alt="nphoto" class="card-image" />
+      <div class="card-overlay"></div>
+    </div>
+    <div class="card-content">
+      <div class="news_title">Call of Duty: Mobile x Ronald Acuña Jr.</div>
+      <div class="category-btn">CODM</div>
+      <div class="ndays">12 DAYS AGO</div>
+    </div>
+  </div>
+
+  <div class="news-card">
+    <div class="card-image-container">
+      <img src="./images/Updates/CODM-S6-ANNOUNCE.jpg" alt="nphoto" class="card-image" />
+      <div class="card-overlay"></div>
+    </div>
+    <div class="card-content">
+      <div class="news_title">Introducing CODM: S6 — Gundams Arrive</div>
+      <div class="category-btn">CODM</div>
+      <div class="ndays">12 DAYS AGO</div>
+    </div>
+  </div>
+</div>
+
+<div class="more-news-container">
+  <div class="more_news">GET MORE NEWS</div>
+</div>
+
+
 
     <div class="game_pass">
         <div class="xbox_logo">
@@ -1543,13 +1579,359 @@ function getUpdates() {
             <span>© 2024-2025 Activision Publishing, Inc. ACTIVISION, CALL OF DUTY, CALL OF DUTY LEAGUE, MODERN WARFARE, CALL OF DUTY BLACK OPS, CALL OF DUTY WARZONE, and CALL OF DUTY VANGUARD are trademarks of Activision Publishing, Inc. All other trademarks and trade names are the property of their respective owners.</span>
         </p>
     </div>
-
+  
 
   `
 }
-
 // Function for animation for update page.
+// Main animation function
+function getUpdatesAnimation() {
+    // Hero section animations
+    const heroTimeline = gsap.timeline();
+    
+    // Hero image scale animation
+    heroTimeline.from('.top_image img', {
+        scale: 1.3,
+        duration: 2.5,
+        ease: 'power2.out'
+    });
+
+    // Hero content staggered animation
+    heroTimeline.from('.top_para > div', {
+        y: 100,
+        opacity: 0,
+        stagger: 0.3,
+        duration: 1.5,
+        ease: 'power3.out'
+    }, '-=2');
+  
+
+gsap.fromTo(
+  ".main_news_title",
+  {
+    clipPath: "inset(100% 0 0 0)",
+    y: 80,
+    opacity: 0,
+  },
+  {
+    clipPath: "inset(0% 0 0 0)",
+    y: -10,
+    opacity: 1,
+    duration: 2.8,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".main_news_title",
+      start: "top 90%",
+      toggleActions: "play none none reverse",
+    }
+  }
+);
 
 
-function getUpdatesAnimation(){ 
+  // Animate news cards on scroll into view
+gsap.utils.toArray(".news-card").forEach((card, index) => {
+  gsap.fromTo(
+    card,
+    { y: 50, opacity: 0, scale: 0.95 },
+    {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: card,
+        start: "top 85%",
+        toggleActions: "play none none reverse",
+      },
+      delay: index * 0.15,
+    }
+  );
+});
+
+gsap.fromTo(
+  ".game_pass",
+  {
+    opacity: 0,
+    y: 80,
+    scale: 0.95,
+    rotateX: 8,
+    filter: "blur(10px)",
+    boxShadow: "0 30px 60px rgba(16,124,16,0.07)"
+  },
+  {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    rotateX: 0,
+    filter: "blur(0px)",
+    boxShadow: "0 18px 44px rgba(16,124,16,0.29)",
+    duration: 1.5,
+    ease: "expo.out",
+    scrollTrigger: {
+      trigger: ".game_pass",
+      start: "top 85%",
+      toggleActions: "play none none reverse",
+      // markers: true, // Uncomment for debugging
+    }
+  }
+);
+
+  // gsap.from('.game_pass', {
+  //   y: 50,
+  //   opacity: 0,
+  //   duration: 1.2,
+  //   ease: 'power3.out',
+  //   scrollTrigger: {
+  //     trigger: '.game_pass',
+  //     start: 'top 90%',
+  //     toggleActions: 'play none none reverse'
+  //   }
+  // });
+
+  // Animate game title reveal
+  gsap.fromTo('.game_title', {
+    clipPath: 'inset(100% 0 0 0)',
+    opacity: 0
+  }, {
+    clipPath: 'inset(0% 0 0 0)',
+    opacity: 1,
+    duration: 1.5,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '.game_title',
+      start: 'top 90%',
+      toggleActions: 'play none none reverse'
+    }
+  });
+
+  // Animate each game card on scroll
+  gsap.utils.toArray('.game_cards > div').forEach((card, i) => {
+    gsap.fromTo(card, {
+      y: 100,
+      opacity: 0,
+      scale: 0.95,
+      rotateX: 10,
+      rotateY: -10
+    }, {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      rotateX: 0,
+      rotateY: 0,
+      duration: 1.5,
+      ease: 'back.out(1.3)',
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 85%',
+        toggleActions: 'play none none reverse'
+      },
+      delay: i * 0.15
+    });
+  });
+
+  // Parallax effect on game card images
+  gsap.utils.toArray('.game_image img').forEach((img) => {
+    gsap.fromTo(img, {
+      yPercent: -20
+    }, {
+      yPercent: 20,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: img.closest('div[class^="game_card"]'),
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1
+      }
+    });
+  });
+
+  // Animate "More Games" button/text on scroll
+  gsap.fromTo(
+  ".more-news-container",
+  { y: 60, opacity: 0, scale: 0.95 },
+  { 
+    y: 0, 
+    opacity: 1, 
+    scale: 1,
+    duration: 1.4,
+    ease: "back.out(1.7)",  // subtle bounce easing
+    scrollTrigger: {
+      trigger: ".more-news-container",
+      start: "top 90%",
+      toggleActions: "play none none reverse",
+    }
+  }
+);
+
+
+  gsap.from('.more_games', {
+    y: 40,
+    opacity: 0,
+    duration: 1,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: '.more_games',
+      start: 'top 90%',
+      toggleActions: 'play none none reverse'
+    }
+  });
+
+}
+
+function initializeUpdatesInteractions() {
+    // Enhanced news card hover effects
+    document.querySelectorAll('.news-card').forEach((card) => {
+        const image = card.querySelector('.card-image');
+        const overlay = card.querySelector('.card-overlay');
+        const content = card.querySelector('.card-content');
+        
+        card.addEventListener('mouseenter', () => {
+            gsap.to(image, { 
+                scale: 1.15, 
+                rotation: 2,
+                duration: 0.8, 
+                ease: 'power2.out' 
+            });
+            gsap.to(overlay, { 
+                opacity: 1, 
+                duration: 0.5 
+            });
+            gsap.to(card, { 
+                y: -20, 
+                rotateX: 8,
+                rotateY: 5,
+                boxShadow: '0 30px 60px rgba(255, 87, 51, 0.4)',
+                duration: 0.6,
+                ease: 'power2.out'
+            });
+            gsap.to(content, {
+                y: -5,
+                duration: 0.4,
+                ease: 'power2.out'
+            });
+        });
+
+        card.addEventListener('mouseleave', () => {
+            gsap.to(image, { 
+                scale: 1, 
+                rotation: 0,
+                duration: 0.8, 
+                ease: 'power2.out' 
+            });
+            gsap.to(overlay, { 
+                opacity: 0, 
+                duration: 0.5 
+            });
+            gsap.to(card, { 
+                y: 0, 
+                rotateX: 0,
+                rotateY: 0,
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
+                duration: 0.6,
+                ease: 'power2.out'
+            });
+            gsap.to(content, {
+                y: 0,
+                duration: 0.4,
+                ease: 'power2.out'
+            });
+        });
+
+        // Click animation
+        card.addEventListener('click', () => {
+            gsap.to(card, {
+                scale: 0.95,
+                duration: 0.1,
+                yoyo: true,
+                repeat: 1,
+                ease: 'power2.inOut'
+            });
+        });
+    });
+
+  
+ // Animate Game Pass container
+  gsap.from(".game_pass", {
+    y: 50,
+    opacity: 0,
+    duration: 1.2,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: ".game_pass",
+      start: "top 90%",
+      toggleActions: "play none none reverse"
+    }
+  });
+
+  // Animate game title reveal
+  gsap.fromTo(
+    ".game_title",
+    { clipPath: "inset(100% 0 0 0)", opacity: 0 },
+    {
+      clipPath: "inset(0% 0 0 0)",
+      opacity: 1,
+      duration: 1.5,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".game_title",
+        start: "top 90%",
+        toggleActions: "play none none reverse"
+      }
+    }
+  );
+
+  // Animate each game card
+  gsap.utils.toArray(".game_cards > div").forEach((card, i) => {
+    gsap.fromTo(
+      card,
+      { y: 100, opacity: 0, scale: 0.95, rotateX: 10, rotateY: -10 },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        rotateX: 0,
+        rotateY: 0,
+        duration: 1.5,
+        ease: "back.out(1.3)",
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        },
+        delay: i * 0.15
+      }
+    );
+  });
+
+  // Parallax for game card images
+  gsap.utils.toArray(".game_image img").forEach((img) => {
+    gsap.fromTo(
+      img,
+      { yPercent: -20 },
+      {
+        yPercent: 20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: img.closest("div[class^='game_card']"),
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        }
+      }
+    );
+  });
+
+  // Animate "More Games" button/text
+  gsap.from(".more_games", {
+    y: 40,
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".more_games",
+      start: "top 90%",
+      toggleActions: "play none none reverse"
+    }
+  });
 }
