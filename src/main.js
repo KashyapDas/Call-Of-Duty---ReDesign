@@ -67,10 +67,10 @@ const pageTransition = async (tab) => {
       ScrollTrigger.refresh();
     });
 
-  }  else{
+  }  
+  else{
     // Trigger preload silently in the background
-    preloadFrameImages(); // 🔥 Preload started if not done
-
+    preloadFrameImages(); 
     if (tab.textContent === "Franchises") {
     disableScroll(); // Disable scroll during transition
     mainContent.innerHTML = getFranchises();
@@ -88,39 +88,50 @@ const pageTransition = async (tab) => {
       });
     });
 
-  } else if (tab.textContent === "Updates") {
-    disableScroll(); // Disable scroll during transition
-    mainContent.innerHTML = getUpdates();
+    } 
+    else if (tab.textContent === "Updates") {
+          disableScroll(); // Disable scroll during transition
+          mainContent.innerHTML = getUpdates();
 
-    await new Promise((r) => setTimeout(r, 500));
-    await animateOutPages();
-    
-  // Wait for images to load before enabling animations
+          await new Promise((r) => setTimeout(r, 500));
+          await animateOutPages();
+        
+      // Wait for images to load before enabling animations
 
-  imagesLoaded("#updates_page", { background: true }, () => {
-    requestAnimationFrame(() => {
-      getUpdatesAnimation();
-      initializeUpdatesInteractions();
-      ScrollTrigger.refresh(); // ✅ important
-      enableScroll(); // ✅ Scroll is safe after all GSAP/DOM are ready
-    });
-  });
+      imagesLoaded("#updates_page", { background: true }, () => {
+        requestAnimationFrame(() => {
+          getUpdatesAnimation();
+          initializeUpdatesInteractions();
+          ScrollTrigger.refresh(); // ✅ important
+          enableScroll(); // ✅ Scroll is safe after all GSAP/DOM are ready
+        });
+      });
 
-}else if (tab.textContent === "Soldiers") {
-    mainContent.innerHTML = `<div id="hero"><h1>Soldiers</h1></div>`;
+    }
+    else if (tab.textContent === "Soilders") {
+        console.log("soilders")
+        disableScroll();
+        mainContent.innerHTML = getSoilders();
+        await new Promise((r) => setTimeout(r, 500));
+        await animateOutPages();
+        imagesLoaded("#soilders_page", { background: true }, () => {
+          requestAnimationFrame(() => {
+            getSoilderAnimation();
+            ScrollTrigger.refresh();
+            enableScroll(); 
+          });
+        });
 
-    await new Promise((r) => setTimeout(r, 500));
-    await animateOutPages();
-    enableScroll();
-  }
-  }
+    }
+ 
+}
 };
 // do page transition and navbar transiton according to the mobile views
 const mediaQuery = window.matchMedia("(max-width: 480px)");
 if (mediaQuery.matches) {
   // This block runs if the screen width is 480px or less
     links.forEach((tab) => {
-  tab.addEventListener("click", async (e) => {
+    tab.addEventListener("click", async (e) => {
     e.preventDefault();
     disableScroll();
     // Page in transition
@@ -161,12 +172,16 @@ navIcon.addEventListener("click",(dets)=>{
   {
     gsap.to(mobileNav,{
     left : "0%",
-    duration : 0.2,
-    ease : "power4.inOut",
+    duration : 0.6,
+    ease : Linear,
     onStart : () =>{
       navIcon.classList.remove("ri-menu-3-fill"),
       navIcon.classList.add("ri-menu-2-fill")
-      mobileNav.style.opacity = "100"  
+      gsap.to(mobileNav,{
+        opacity : 1,
+        duration : 0.6,
+        ease : Linear
+      })
     }
     })
   }
@@ -174,12 +189,16 @@ navIcon.addEventListener("click",(dets)=>{
   {
     gsap.to(mobileNav,{
     left : "100%",
-    duration : 0.2,
-    ease : "power4.inOut",
+    duration : 0.6,
+    ease : Linear,
     onStart : () =>{
-      navIcon.classList.remove("ri-menu-2-fill"),
-      navIcon.classList.add("ri-menu-3-fill")
-      mobileNav.style.opacity = "0"  
+      navIcon.classList.remove("ri-menu-2-fill");
+      navIcon.classList.add("ri-menu-3-fill");
+      gsap.to(mobileNav,{
+        opacity : 0,
+        duration : 0.6,
+        ease : Linear
+      })
     }
     })
   }
@@ -961,246 +980,6 @@ document.addEventListener("click", function (e) {
   }
 });
 
-
-
-
-// ad-on fnc of the animation page
-// function initializeFranchiseInteractions() {
-  // Filter functionality
-//   const filterBtns = document.querySelectorAll('.filter-btn');
-//   const cards = document.querySelectorAll('.franchise-card');
-
-//   filterBtns.forEach(btn => {
-//     btn.addEventListener('click', () => {
-//       const filter = btn.dataset.filter;
-      
-//       // Update active button
-//       filterBtns.forEach(b => b.classList.remove('active'));
-//       btn.classList.add('active');
-      
-//       // Filter cards with animation
-//       cards.forEach(card => {
-//         const shouldShow = filter === 'all' || card.dataset.status === filter;
-        
-//         if (shouldShow) {
-//           gsap.to(card, {
-//              autoAlpha: 1,
-//             scale: 1,
-//             duration: 0.5,
-//             ease: "back.out(1.7)",
-//             onStart: () => gsap.set(card, { display: 'block' })
-//           });
-//           // card.style.display = 'block';
-          
-
-//         } else {
-//           gsap.to(card, {
-//             autoAlpha: 0,
-//             scale: 0.8,
-//             duration: 0.3,
-//             ease: "power2.in",
-//             onComplete: () => gsap.set(card, { display: 'none' })
-//               // card.style.display = 'none';
-//         });
-//         }
-//       });
-//     });
-//   });
-
-//   // Card hover effects
-//   cards.forEach(card => {
-//     const hoverEffect = card.querySelector('.card-hover-effect');
-    
-//     card.addEventListener('mouseenter', () => {
-//       if (hoverEffect) {
-//         gsap.to(hoverEffect, {
-//           opacity: 1,
-//           duration: 0.3,
-//         });
-//       }
-//       gsap.to(card, {
-//         y: -10,
-//         duration: 0.3,
-//         ease: "power2.out"
-//       });
-//     });
-
-//     card.addEventListener('mouseleave', () => {
-//       if (hoverEffect) {
-//         gsap.to(hoverEffect, {
-//           opacity: 0,
-//           duration: 0.3
-//         });
-//       }
-//       gsap.to(card, {
-//         y: 0,
-//         duration: 0.3,
-//         ease: "power2.out"
-//       });
-//     });
-//   });
-// }
-// function initializeFranchiseInteractions() {
-//   const filterBtns = document.querySelectorAll('.filter-btn');
-//   const cards = document.querySelectorAll('.franchise-card');
-
-//   const hoverSound = new Audio('hover.mp3'); // replace with correct path
-
-//   // FILTER LOGIC
-//   filterBtns.forEach(btn => {
-//     btn.addEventListener('click', () => {
-//       const filter = btn.dataset.filter;
-
-//       filterBtns.forEach(b => b.classList.remove('active'));
-//       btn.classList.add('active');
-
-//       cards.forEach(card => {
-//         const shouldShow = filter === 'all' || card.dataset.status === filter;
-
-//         if (shouldShow) {
-//           card.style.display = 'block';
-//           gsap.fromTo(card, {
-//             autoAlpha: 0,
-//             scale: 0.8
-//           }, {
-//             autoAlpha: 1,
-//             scale: 1,
-//             duration: 0.4,
-//             ease: "back.out(1.7)"
-//           });
-//         } else {
-//           gsap.to(card, {
-//             autoAlpha: 0,
-//             scale: 0.8,
-//             duration: 0.3,
-//             ease: "power2.in",
-//             onComplete: () => {
-//               card.style.display = 'none';
-//             }
-//           });
-//         }
-//       });
-//     });
-//   });
-
-
-
-// // Detect if the device supports hover
-// // const canHover = window.matchMedia('(hover: hover)').matches;
-
-// cards.forEach(card => {
-//   const hoverEffect = card.querySelector('.card-hover-effect');
-//   const image = card.querySelector('.card-bg-image');
-//   const title = card.querySelector('.card-title');
-//   const subtitle = card.querySelector('.card-subtitle');
-//   const description = card.querySelector('.card-description');
-//   const features = card.querySelectorAll('.feature-tag');
-//   const revealElements = [title, subtitle, description, ...features];
-
-//   // Desktop hover effects
-//   card.addEventListener('mousemove', (e) => {
-//     const rect = card.getBoundingClientRect();
-//     const x = e.clientX - rect.left;
-//     const y = e.clientY - rect.top;
-//     const centerX = rect.width / 2;
-//     const centerY = rect.height / 2;
-//     const rotateY = (x - centerX) / 10;
-//     const rotateX = -(y - centerY) / 10;
-//     gsap.to(card, {
-//       rotationY: rotateY,
-//       rotationX: rotateX,
-//       transformPerspective: 600,
-//       transformOrigin: "center",
-//       duration: 0.3
-//     });
-//   });
-
-//   card.addEventListener('mouseenter', () => {
-//     hoverSound.currentTime = 0;
-//     hoverSound.play();
-
-//     gsap.to(card, { y: -10, duration: 0.3, ease: "power2.out" });
-//     card.classList.add('glow-border');
-
-//     if (hoverEffect) {
-//       gsap.to(hoverEffect, { opacity: 1, duration: 0.3 });
-//     }
-
-//     if (image) {
-//       gsap.to(image, { scale: 1.08, duration: 0.3 });
-//     }
-
-//     gsap.fromTo(revealElements, {
-//       y: 20,
-//       opacity: 0
-//     }, {
-//       y: 0,
-//       opacity: 1,
-//       duration: 0.5,
-//       stagger: 0.05,
-//       ease: "power2.out"
-//     });
-//   });
-
-//   card.addEventListener('mouseleave', () => {
-//     gsap.to(card, {
-//       y: 0,
-//       rotationX: 0,
-//       rotationY: 0,
-//       duration: 0.3,
-//       ease: "power2.out"
-//     });
-
-//     card.classList.remove('glow-border');
-
-//     if (hoverEffect) {
-//       gsap.to(hoverEffect, { opacity: 0, duration: 0.3 });
-//     }
-
-//     if (image) {
-//       gsap.to(image, { scale: 1, duration: 0.3 });
-//     }
-//   });
-
-//   // Mobile scroll-based animation using IntersectionObserver
-//   const observer = new IntersectionObserver((entries) => {
-//     entries.forEach(entry => {
-//       if (entry.isIntersecting && window.innerWidth < 1024)
-//  {
-//         hoverSound.currentTime = 0;
-//         hoverSound.play();
-
-//         gsap.to(card, { y: -10, duration: 0.3, ease: "power2.out" });
-//         card.classList.add('glow-border');
-//         if (hoverEffect) gsap.to(hoverEffect, { opacity: 1, duration: 0.3 });
-//         if (image) gsap.to(image, { scale: 1.08, duration: 0.3 });
-
-//         gsap.fromTo(revealElements, {
-//           y: 20,
-//           opacity: 0
-//         }, {
-//           y: 0,
-//           opacity: 1,
-//           duration: 0.5,
-//           stagger: 0.05,
-//           ease: "power2.out"
-//         });
-//       } else if (window.innerWidth < 1024)
-//  {
-//         gsap.to(card, { y: 0, duration: 0.3, ease: "power2.out" });
-//         card.classList.remove('glow-border');
-//         if (hoverEffect) gsap.to(hoverEffect, { opacity: 0, duration: 0.3 });
-//         if (image) gsap.to(image, { scale: 1, duration: 0.3 });
-//       }
-//     });
-//   }, { threshold: 0.3 });
-
-//   observer.observe(card);
-// });
-
-
-// }
-
 function initializeFranchiseInteractions() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('.franchise-card');
@@ -1934,4 +1713,17 @@ function initializeUpdatesInteractions() {
       toggleActions: "play none none reverse"
     }
   });
+}
+
+function getSoilders(){
+  return `
+    <div id="soilders_page">
+        <h1>Hello from Soilders</h1>
+    </div>
+  `
+}
+
+function getSoilderAnimation()
+{
+  console.log("Hello from soilders animation fnc");
 }
